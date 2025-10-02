@@ -359,7 +359,7 @@
             line-height: 1.6;
         }
 
-        /* Portfolio Section */
+        /* Portfolio Section - NEW: Moved before Team */
         .portfolio-filters {
             display: flex;
             justify-content: center;
@@ -451,7 +451,7 @@
             font-weight: bold;
         }
 
-        /* Category Slideshow Styles */
+        /* NEW: Category Slideshow Styles */
         .category-slideshow {
             position: fixed;
             top: 0;
@@ -561,7 +561,7 @@
             background: var(--primary-color);
         }
 
-        /* Team Section */
+        /* Team Section - NEW: Moved after Portfolio */
         .team {
             background: var(--bg-light);
         }
@@ -1206,7 +1206,7 @@
         </div>
     </div>
 
-    <!-- Category Slideshow -->
+    <!-- NEW: Category Slideshow -->
     <div class="category-slideshow" id="category-slideshow">
         <button class="slideshow-close" id="slideshow-close">
             <i class="fas fa-times"></i>
@@ -1257,7 +1257,7 @@
         <div class="container">
             <nav class="nav-container">
                 <a href="#home" class="logo">
-                    <img src="images/mwaffs_logo_2.png" alt="MWAFFS MEDIA Logo" style="width:60px; height:auto;" onerror="this.style.display='none'">
+                    <img src="images/mwaffs logo 2.png" alt="jud.png" style="width:60px; height:auto;">
                     MWAFFS MEDIA
                 </a>
                 <ul class="nav-menu" id="nav-menu">
@@ -1369,7 +1369,7 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio Section - CHANGED: Moved before Team -->
     <section class="section portfolio" id="portfolio">
         <div class="container">
             <div class="section-title fade-in">
@@ -1388,7 +1388,7 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team Section - CHANGED: Moved after Portfolio -->
     <section class="section team" id="team">
         <div class="container">
             <div class="section-title fade-in">
@@ -1727,13 +1727,12 @@
     </div>
 
     <script>
-        // Category slideshow functionality
+        // NEW: Category slideshow functionality
         let currentSlideshow = null;
         let slideshowInterval = null;
         let currentSlideIndex = 0;
         
         // Extended portfolio data with multiple images per category
-        // FIXED: Corrected the landscape photography images
         let portfolioData = [
             {
                 id: 1,
@@ -1763,9 +1762,9 @@
                 category: "photography",
                 description: "Stunning Malawian landscapes",
                 media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&h=400&fit=crop" }
+                    { type: "image", src: "images/jud.png" },
+                    { type: "image", src: "images/Precious Mataka.png" },
+                    { type: "image", src: "images/Grant Mliule.jpg" }
                 ]
             },
             {
@@ -1814,73 +1813,73 @@
             }
         ];
 
+        // Rest of your existing data and functions remain the same
         // Admin Security Configuration
         const ADMIN_CONFIG = {
-            username: "mwaffsadmin",
-            password: "MalawiMedia2024!",
-            sessionTimeout: 60 * 60 * 1000,
-            secretTrigger: "mwaffs"
+            username: "mwaffsadmin", // Change this to your preferred username
+            password: "MalawiMedia2024!", // Change this to your preferred password
+            sessionTimeout: 60 * 60 * 1000, // 1 hour in milliseconds
+            secretTrigger: "mwaffs" // Secret keyword to trigger login
         };
 
         // Data Storage
-        // FIXED: Corrected team image paths and added fallback images
         let teamData = [
             {
                 id: 1,
                 name: "Precious Mataka",
                 position: "CEO",
                 bio: "As a Co-Founder of MWAFFS Media, Precious Mataka leads with creativity, vision, and innovation. He is a dynamic leader with a passion for developing fresh ideas, guiding teams toward success, and delivering impactful media solutions that inspire and connect communities.",
-                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
+                image: "images/Precious Mataka CEO.png"
             },
             {
                 id: 2,
                 name: "Praise Bwanali",
                 position: "CEO",
                 bio: "Creative director and co-founder with extensive experience in photography and videography. Committed to capturing authentic Malawian stories.",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+                image: "images/Praise Bwanali.jpg"
             },
             {
                 id: 3,
                 name: "Grant Mliule",
                 position: "Managing Director",
                 bio: "Strategic leader overseeing company operations and business development. Expert in project management and client relationships.",
-                image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=300&h=300&fit=crop&crop=face"
+                image: "images/Grant Mliule.jpg"
             },
             {
                 id: 4,
                 name: "Fatsani Munkhondya",
                 position: "Secretary",
-                bio: "As Secretary of MWAFFS Media, Fatsani ensures effective communication, organization, and record-keeping within the team. With strong attention to detail and commitment to efficiency, she plays a vital role in supporting leadership and keeping operations running smoothly.",
-                image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face"
+                bio: "As Secretary of MWAFFS Media, [Name] ensures effective communication, organization, and record-keeping within the team. With strong attention to detail and commitment to efficiency, [he/she] plays a vital role in supporting leadership and keeping operations running smoothly.",
+                image: "images/mwaffs.png"
             },
             {
                 id: 5,
                 name: "Charles Luwe",
                 position: "Marketing Director",
-                bio: "Charles Luwe, the Marketing Director of MWAFFS Media, leads with creativity and strategy in promoting the company's brand and services. With a passion for innovation and audience engagement, he develops impactful campaigns that connect MWAFFS Media to clients and communities.",
-                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face"
+                bio: "Charles Luwe, the Marketing Director of MWAFFS Media, leads with creativity and strategy in promoting the company's brand and services. With a passion for innovation and audience engagement, [he/she] develops impactful campaigns that connect MWAFFS Media to clients and communities.",
+                image: "images/mwaffs.png"
             },
             {
                 id: 6,
                 name: "Alexander Makuluni",
                 position: "Deputy Marketing Director",
                 bio: "As the Deputy Marketing Director, Alexander Makuluni supports the marketing team with fresh ideas and creative initiatives. Dedicated to growth and visibility, he works closely with the Marketing Director to expand MWAFFS Media's reach and strengthen its brand presence.",
-                image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=300&h=300&fit=crop&crop=face"
+                image: "images/mwaffs.png"
             },
             {
                 id: 7,
-                name: "Watson S. Banda",
+                name: "Watson S. Banda ",
                 position: "Chief Whipper",
-                bio: "As Chief Whipper, Watson S. Banda energizes and motivates the MWAFFS Media team, fostering unity and collaboration across projects. Known for discipline and team coordination, he ensures that goals are met on time and that every member contributes to the company's success.",
-                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=300&fit=crop&crop=face"
+                bio: "As Chief Whipper, Watson S. Banda energizes and motivates the MWAFFS Media team, fostering unity and collaboration across projects. Known for discipline and team coordination, [he/she] ensures that goals are met on time and that every member contributes to the company's success.",
+                image: "images/Watson Silvestar Banda.jpeg"
             }
         ];
 
         let contentData = {
             tagline: "Capturing Malawi's Stories Through Creative Excellence",
             description: "MWAFFS MEDIA stands at the forefront of Malawi's creative industry, delivering exceptional photography, videography, and graphic design services.",
-            phone: "+265 888 251 157",
-            email: "mwaffsmedia@gmail.com",
+            phone: "+265 123 456 789",
+            email: "info@mwaffsmedia.com",
             address: "Blantyre, Southern Region\nMalawi"
         };
 
@@ -1900,13 +1899,13 @@
             initializeContactForm();
             initializeAdminSecurity();
             initializeCounters();
-            initializeSlideshow();
+            initializeSlideshow(); // NEW: Initialize slideshow functionality
 
             // Check if already logged in
             checkAdminSession();
         });
 
-        // Initialize slideshow functionality
+        // NEW: Initialize slideshow functionality
         function initializeSlideshow() {
             const closeBtn = document.getElementById('slideshow-close');
             const prevBtn = document.getElementById('slideshow-prev');
@@ -1934,7 +1933,7 @@
             });
         }
 
-        // Open category slideshow
+        // NEW: Open category slideshow
         function openCategorySlideshow(category) {
             const categoryItems = portfolioData.filter(item => item.category === category);
             if (categoryItems.length === 0) return;
@@ -1962,7 +1961,7 @@
                 slide.className = `slideshow-slide ${index === 0 ? 'active' : ''}`;
                 
                 if (media.type === 'image') {
-                    slide.innerHTML = `<img src="${media.url}" alt="Slideshow image ${index + 1}" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">`;
+                    slide.innerHTML = `<img src="${media.url}" alt="Slideshow image ${index + 1}">`;
                 } else if (media.type === 'video') {
                     slide.innerHTML = `<iframe src="${media.url}" frameborder="0" allowfullscreen></iframe>`;
                 } else if (media.type === 'youtube') {
@@ -1986,7 +1985,7 @@
             startAutoSlide();
         }
 
-        // Navigate slideshow
+        // NEW: Navigate slideshow
         function navigateSlideshow(direction) {
             if (!currentSlideshow) return;
             
@@ -2005,7 +2004,7 @@
             resetAutoSlide();
         }
 
-        // Go to specific slide
+        // NEW: Go to specific slide
         function goToSlide(index) {
             if (!currentSlideshow || index < 0 || index >= currentSlideshow.length) return;
             
@@ -2024,15 +2023,15 @@
             resetAutoSlide();
         }
 
-        // Start auto-slide
+        // NEW: Start auto-slide
         function startAutoSlide() {
             if (slideshowInterval) clearInterval(slideshowInterval);
             slideshowInterval = setInterval(() => {
                 navigateSlideshow(1);
-            }, 2000);
+            }, 2000); // Change slide every 2 seconds
         }
 
-        // Reset auto-slide timer
+        // NEW: Reset auto-slide timer
         function resetAutoSlide() {
             if (slideshowInterval) {
                 clearInterval(slideshowInterval);
@@ -2040,7 +2039,7 @@
             }
         }
 
-        // Close slideshow
+        // NEW: Close slideshow
         function closeSlideshow() {
             document.getElementById('category-slideshow').classList.remove('active');
             document.body.style.overflow = 'auto';
@@ -2290,7 +2289,7 @@
             }, 40);
         }
 
-        // Portfolio functionality
+        // Portfolio functionality - UPDATED: Added category slideshow
         function initializePortfolio() {
             renderPortfolio();
             
@@ -2324,12 +2323,12 @@
                 } else if (thumbnail.type === 'video') {
                     mediaContent = `<video controls><source src="${thumbnail.url}" type="video/mp4"></video>`;
                 } else {
-                    mediaContent = `<img src="${thumbnail.url}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/500x400?text=Image+Not+Found'">`;
+                    mediaContent = `<img src="${thumbnail.url}" alt="${item.title}" loading="lazy">`;
                 }
 
                 portfolioItem.innerHTML = `
                     <div class="item-image">
-                        ${thumbnail.type === 'image' ? `<img src="${thumbnail.url}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/500x400?text=Image+Not+Found'">` : ''}
+                        ${thumbnail.type === 'image' ? `<img src="${thumbnail.url}" alt="${item.title}" loading="lazy">` : ''}
                         <div class="item-overlay">
                             <button onclick="openLightbox('${thumbnail.url}', '${thumbnail.type}')" class="btn btn-primary">
                                 <i class="fas fa-expand"></i>
@@ -2396,7 +2395,7 @@
             } else if (type === 'video') {
                 mediaElement = `<video controls width="80%" height="80%"><source src="${media}" type="video/mp4"></video>`;
             } else {
-                mediaElement = `<img src="${media}" alt="Portfolio item" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">`;
+                mediaElement = `<img src="${media}" alt="Portfolio item">`;
             }
             
             content.innerHTML = mediaElement;
@@ -2424,7 +2423,7 @@
                 teamCard.className = 'team-card';
                 teamCard.innerHTML = `
                     <div class="card-image">
-                        <img src="${member.image}" alt="${member.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Image+Not+Found'">
+                        <img src="${member.image}" alt="${member.name}" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>${member.name}</h3>
@@ -2641,7 +2640,7 @@
             }
         }
 
-        // Portfolio management functions
+        // Portfolio management functions - UPDATED: For new portfolio data structure
         function loadPortfolioItem() {
             const select = document.getElementById('portfolio-select');
             const itemId = parseInt(select.value);
@@ -2791,6 +2790,168 @@
             console.error('An error occurred:', e.error);
         });
 
+        // Add CSS for testimonial carousel
+        const additionalCSS = `
+            .testimonials-carousel {
+                position: relative;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            .testimonial-item {
+                display: none;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+
+            .testimonial-item.active {
+                display: block;
+                opacity: 1;
+            }
+
+            .testimonial-content {
+                background: white;
+                padding: 3rem 2rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                position: relative;
+            }
+
+            .testimonial-content::before {
+                content: '"';
+                font-size: 4rem;
+                color: var(--primary-color);
+                position: absolute;
+                top: -10px;
+                left: 20px;
+                font-family: serif;
+            }
+
+            .testimonial-content p {
+                font-size: 1.2rem;
+                font-style: italic;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .testimonial-author h4 {
+                color: var(--primary-color);
+                margin-bottom: 0.5rem;
+                font-size: 1.1rem;
+            }
+
+            .testimonial-author span {
+                opacity: 0.7;
+                font-size: 0.9rem;
+            }
+
+            .testimonial-nav {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .testimonial-nav button {
+                width: 50px;
+                height: 50px;
+                border: 2px solid var(--primary-color);
+                background: transparent;
+                color: var(--primary-color);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .testimonial-nav button:hover {
+                background: var(--primary-color);
+                color: white;
+                transform: scale(1.1);
+            }
+
+            .admin-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid var(--primary-color);
+            }
+
+            .admin-header h2 {
+                color: var(--primary-color);
+                margin: 0;
+            }
+
+            .close-admin {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--text-dark);
+                padding: 5px;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+            }
+
+            .close-admin:hover {
+                background: var(--primary-color);
+                color: white;
+            }
+
+            .admin-buttons {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .admin-buttons .btn {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .form-group select {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                transition: border-color 0.3s ease;
+                background: white;
+            }
+
+            .form-group select:focus {
+                outline: none;
+                border-color: var(--primary-color);
+            }
+
+            @media (max-width: 768px) {
+                .testimonial-content {
+                    padding: 2rem 1rem;
+                }
+
+                .testimonial-content p {
+                    font-size: 1rem;
+                }
+
+                .admin-buttons {
+                    flex-direction: column;
+                }
+            }
+        `;
+
+        // Inject additional CSS
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalCSS;
+        document.head.appendChild(styleSheet);
+
+        // Add smooth scrolling behavior for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+
         // Preload critical images for better performance
         function preloadImages() {
             const imageUrls = [
@@ -2808,6 +2969,26 @@
 
         // Initialize preloading
         setTimeout(preloadImages, 1000);
+
+        // Add intersection observer for better performance
+        function setupLazyLoading() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                images.forEach(img => imageObserver.observe(img));
+            }
+        }
 
         // Add accessibility improvements
         function setupAccessibility() {
@@ -2829,6 +3010,47 @@
 
         // Initialize accessibility features
         setTimeout(setupAccessibility, 500);
+        
+        // Add service worker for offline functionality (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Service worker registration would go here
+                // This is just a placeholder for future implementation
+                console.log('Service Worker ready for implementation');
+            });
+        }
+
+        // Add print styles
+        const printCSS = `
+            @media print {
+                .header, .admin-panel, .admin-toggle, .lightbox {
+                    display: none !important;
+                }
+                
+                .hero {
+                    height: auto;
+                    padding: 2rem 0;
+                    background: white;
+                    color: black;
+                }
+                
+                .section {
+                    page-break-inside: avoid;
+                    padding: 1rem 0;
+                }
+                
+                .team-card, .service-card, .portfolio-item {
+                    page-break-inside: avoid;
+                    box-shadow: none;
+                    border: 1px solid #ddd;
+                }
+            }
+        `;
+
+        const printStyleSheet = document.createElement('style');
+        printStyleSheet.textContent = printCSS;
+        printStyleSheet.media = 'print';
+        document.head.appendChild(printStyleSheet);
     </script>
 </body>
 </html>
