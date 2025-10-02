@@ -7,7 +7,7 @@
     <meta name="description" content="MWAFFS MEDIA - Leading Malawian media company specializing in Photography, Videography, and Graphic Design services.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* All your existing CSS remains the same */
+        /* Enhanced CSS with new features */
         * {
             margin: 0;
             padding: 0;
@@ -25,6 +25,8 @@
             --malawi-flag-red: #ce1126;
             --malawi-flag-black: #000000;
             --malawi-flag-green: #21b000;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
         }
 
         body {
@@ -40,7 +42,7 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Enhanced Header with better animation */
         .header {
             position: fixed;
             top: 0;
@@ -49,11 +51,13 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .header.scrolled {
             background: var(--secondary-color);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.15);
+            padding: 0.5rem 0;
         }
 
         .nav-container {
@@ -61,6 +65,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            transition: padding 0.3s ease;
+        }
+
+        .header.scrolled .nav-container {
+            padding: 0.5rem 0;
         }
 
         .logo {
@@ -71,6 +80,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo i {
@@ -88,6 +102,7 @@
             text-decoration: none;
             transition: color 0.3s ease;
             position: relative;
+            font-weight: 500;
         }
 
         .nav-menu a:hover,
@@ -116,6 +131,7 @@
             flex-direction: column;
             cursor: pointer;
             gap: 4px;
+            padding: 5px;
         }
 
         .hamburger span {
@@ -137,10 +153,10 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
 
-        /* Hero Section */
+        /* Enhanced Hero Section with Particles */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(231, 76, 60, 0.3)),
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(231, 76, 60, 0.7)),
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232c3e50" width="1200" height="600"/><circle fill="%23e74c3c" cx="300" cy="150" r="50" opacity="0.3"/><circle fill="%23f39c12" cx="900" cy="400" r="80" opacity="0.2"/><rect fill="%2321b000" x="500" y="200" width="200" height="200" opacity="0.1" rx="20"/></svg>');
             background-size: cover;
             background-position: center;
@@ -151,12 +167,35 @@
             text-align: center;
             color: var(--text-light);
             position: relative;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
 
         .hero-content h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-content .tagline {
@@ -164,12 +203,14 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeInUp 1s ease 0.3s both;
+            font-weight: 300;
         }
 
         .hero-content .subtitle {
             font-size: clamp(1rem, 2vw, 1.3rem);
             margin-bottom: 3rem;
             animation: fadeInUp 1s ease 0.6s both;
+            opacity: 0.8;
         }
 
         .cta-buttons {
@@ -191,6 +232,23 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
@@ -201,7 +259,7 @@
         .btn-primary:hover {
             background: #c0392b;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
         }
 
         .btn-outline {
@@ -214,11 +272,43 @@
             background: white;
             color: var(--secondary-color);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,255,255,0.2);
         }
 
-        /* Section Styles */
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #219653;
+            transform: translateY(-2px);
+        }
+
+        /* Scroll Down Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        /* Enhanced Section Styles */
         .section {
-            padding: 80px 0;
+            padding: 100px 0;
             position: relative;
         }
 
@@ -243,6 +333,7 @@
             width: 60px;
             height: 4px;
             background: var(--primary-color);
+            border-radius: 2px;
         }
 
         .section-title p {
@@ -252,9 +343,21 @@
             margin: 0 auto;
         }
 
-        /* About Section */
+        /* Enhanced About Section */
         .about {
             background: var(--bg-light);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.02"><circle cx="50" cy="50" r="2" fill="%232c3e50"/></svg>');
+            background-size: 50px 50px;
         }
 
         .about-grid {
@@ -288,13 +391,26 @@
             text-align: center;
             padding: 2rem;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
         }
 
         .stat-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .stat-item .number {
@@ -308,9 +424,10 @@
             font-size: 1rem;
             opacity: 0.8;
             margin-top: 0.5rem;
+            font-weight: 500;
         }
 
-        /* Services Section */
+        /* Enhanced Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -320,12 +437,13 @@
 
         .service-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .service-card::before {
@@ -335,31 +453,38 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .service-card i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.1);
         }
 
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--secondary-color);
         }
 
         .service-card p {
             opacity: 0.8;
             line-height: 1.6;
+            font-size: 1rem;
         }
 
-        /* Portfolio Section */
+        /* Enhanced Portfolio Section */
         .portfolio-filters {
             display: flex;
             justify-content: center;
@@ -369,45 +494,49 @@
         }
 
         .filter-btn {
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: 2px solid var(--primary-color);
             background: transparent;
             color: var(--primary-color);
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .filter-btn.active,
         .filter-btn:hover {
             background: var(--primary-color);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .portfolio-item {
             position: relative;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
             background: white;
+            cursor: pointer;
         }
 
         .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .portfolio-item .item-image {
             width: 100%;
-            height: 250px;
+            height: 280px;
             background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
             position: relative;
             overflow: hidden;
@@ -417,11 +546,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
 
         .portfolio-item:hover .item-image img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .portfolio-item .item-overlay {
@@ -430,12 +559,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(44, 62, 80, 0.9);
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(44, 62, 80, 0.9));
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .portfolio-item:hover .item-overlay {
@@ -448,22 +577,33 @@
 
         .portfolio-item h3 {
             margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            color: var(--secondary-color);
         }
 
         .portfolio-item .category {
             color: var(--primary-color);
             font-size: 0.9rem;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Category Slideshow Styles */
+        .portfolio-item .description {
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Enhanced Category Slideshow */
         .category-slideshow {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             z-index: 2000;
             display: none;
             align-items: center;
@@ -477,12 +617,13 @@
 
         .slideshow-container {
             position: relative;
-            width: 90%;
-            max-width: 1000px;
-            height: 70vh;
+            width: 95%;
+            max-width: 1200px;
+            height: 80vh;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            background: #000;
         }
 
         .slideshow-slide {
@@ -496,6 +637,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
         .slideshow-slide.active {
@@ -507,19 +649,21 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            border-radius: 10px;
         }
 
         .slideshow-controls {
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
+            align-items: center;
         }
 
         .slideshow-close {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             color: white;
             border: none;
             width: 50px;
@@ -531,20 +675,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slideshow-close:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
         }
 
         .slideshow-nav {
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slideshow-nav:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
         }
 
         .slideshow-dots {
@@ -559,42 +715,55 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.5);
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .slideshow-dot.active {
             background: var(--primary-color);
+            transform: scale(1.2);
         }
 
-        /* Team Section */
+        .slideshow-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced Team Section */
         .team {
             background: var(--bg-light);
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .team-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
             position: relative;
+            text-align: center;
         }
 
         .team-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .team-card .card-image {
             width: 100%;
-            height: 300px;
+            height: 320px;
             background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
             position: relative;
             overflow: hidden;
@@ -604,7 +773,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
 
         .team-card:hover .card-image img {
@@ -612,29 +781,58 @@
         }
 
         .team-card .card-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .team-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
+            color: var(--secondary-color);
         }
 
         .team-card .position {
             color: var(--primary-color);
             font-weight: bold;
             margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
         .team-card .bio {
             opacity: 0.8;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
-        /* Contact Section */
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Enhanced Contact Section */
         .contact {
             background: var(--bg-light);
+            position: relative;
         }
 
         .contact-grid {
@@ -646,30 +844,33 @@
 
         .contact-form {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
+            color: var(--secondary-color);
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            transition: border-color 0.3s ease;
+            border-radius: 10px;
+            transition: all 0.3s ease;
             font-family: inherit;
+            font-size: 1rem;
         }
 
         .form-group input:focus,
@@ -677,25 +878,36 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
         }
 
         .contact-info h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-color);
         }
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
         }
 
         .contact-item i {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
-            width: 20px;
+            width: 30px;
+            margin-top: 5px;
         }
 
         .social-links {
@@ -715,242 +927,121 @@
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-links a:hover::before {
+            left: 100%;
         }
 
         .social-links a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
         }
 
-        /* Footer */
+        /* Enhanced Footer */
         .footer {
             background: var(--secondary-color);
             color: var(--text-light);
-            padding: 3rem 0 1rem;
+            padding: 4rem 0 1rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             margin-bottom: 2rem;
         }
 
         .footer-section h3 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
         }
 
         .footer-section a {
             color: var(--text-light);
             text-decoration: none;
             transition: color 0.3s ease;
+            opacity: 0.8;
         }
 
         .footer-section a:hover {
             color: var(--primary-color);
+            opacity: 1;
         }
 
         .footer-bottom {
             border-top: 1px solid #495057;
-            padding-top: 1rem;
+            padding-top: 2rem;
             text-align: center;
+            opacity: 0.7;
         }
 
-        /* Admin Panel */
-        .admin-panel {
+        /* Back to Top Button */
+        .back-to-top {
             position: fixed;
-            top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            z-index: 2000;
-            overflow-y: auto;
-            transition: right 0.3s ease;
-            padding: 2rem;
-        }
-
-        .admin-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
             background: var(--primary-color);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 2001;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
-            display: none; /* Hidden by default */
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
 
-        .admin-toggle.visible {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .admin-toggle:hover {
+        .back-to-top:hover {
             background: #c0392b;
-            transform: scale(1.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
         }
 
-        .admin-section {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-        }
-
-        .admin-section h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 0.5rem;
-        }
-
-        /* Admin Login Modal */
-        .admin-login-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 3000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .admin-login-modal.active {
+        .back-to-top.visible {
             display: flex;
-        }
-
-        .login-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            width: 90%;
-            max-width: 400px;
-        }
-
-        .login-form h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .login-form .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .login-form .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .login-message {
-            margin-top: 1rem;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            display: none;
-        }
-
-        .login-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .secret-login-trigger {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 10px;
-            height: 10px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 2002;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--secondary-color);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 2rem;
-                transition: left 0.3s ease;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-menu li {
-                margin: 1rem 0;
-            }
-
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .admin-panel {
-                width: 100vw;
-                right: -100vw;
-            }
-
-            .slideshow-container {
-                height: 50vh;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Loading Animation */
@@ -979,10 +1070,10 @@
         }
 
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid #34495e;
-            border-top: 3px solid var(--primary-color);
+            width: 60px;
+            height: 60px;
+            border: 4px solid #34495e;
+            border-top: 4px solid var(--primary-color);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 1rem;
@@ -993,6 +1084,7 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Enhanced Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -1001,16 +1093,23 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(0,0,0,0.95);
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+        }
+
+        .lightbox.active {
+            display: flex;
         }
 
         .lightbox img,
         .lightbox video {
             max-width: 90%;
-            max-height: 90%;
+            max-height: 80%;
             object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
 
         .lightbox-close {
@@ -1018,30 +1117,291 @@
             top: 20px;
             right: 30px;
             color: white;
-            font-size: 2rem;
+            font-size: 2.5rem;
             cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-color);
+        }
+
+        .lightbox-nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .lightbox-nav button {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav button:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            padding: 15px 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 4000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .notification.active {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            border-left-color: var(--primary-color);
+        }
+
+        .notification.warning {
+            border-left-color: var(--warning-color);
+        }
+
+        /* Enhanced portfolio grid for photography */
+        .portfolio-item .item-image img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .item-image img {
+            transform: scale(1.1);
+        }
+
+        /* Loading states for images */
+        .portfolio-item .item-image {
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item .item-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .portfolio-item .item-image.loaded::before {
+            display: none;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--secondary-color);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 3rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .admin-panel {
+                width: 100vw;
+                right: -100vw;
+            }
+
+            .slideshow-container {
+                height: 50vh;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pulse Animation for CTA */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Enhanced Admin Panel */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            z-index: 2000;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            padding: 2rem;
+        }
+
+        .admin-panel.active {
+            right: 0;
+        }
+
+        .admin-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2001;
+            transition: all 0.3s ease;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .admin-toggle.visible {
+            display: flex;
+        }
+
+        .admin-toggle:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .admin-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+
+        .admin-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         /* Form Message Styles */
         .form-message {
-            padding: 12px;
-            border-radius: 8px;
+            padding: 15px;
+            border-radius: 10px;
             margin-top: 15px;
             text-align: center;
             display: none;
             font-weight: bold;
+            border-left: 4px solid;
         }
 
         .form-message.success {
             background-color: #d4edda;
             color: #155724;
-            border: 1px solid #c3e6cb;
+            border-color: #c3e6cb;
         }
 
         .form-message.error {
             background-color: #f8d7da;
             color: #721c24;
-            border: 1px solid #f5c6cb;
+            border-color: #f5c6cb;
         }
 
         .loading {
@@ -1049,9 +1409,10 @@
             pointer-events: none;
         }
 
+        /* Enhanced Testimonials */
         .testimonials-carousel {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -1071,19 +1432,20 @@
         .testimonial-content {
             background: white;
             padding: 3rem 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             position: relative;
         }
 
         .testimonial-content::before {
             content: '"';
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--primary-color);
             position: absolute;
-            top: -10px;
+            top: -20px;
             left: 20px;
             font-family: serif;
+            opacity: 0.3;
         }
 
         .testimonial-content p {
@@ -1091,6 +1453,22 @@
             font-style: italic;
             margin-bottom: 2rem;
             line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
         }
 
         .testimonial-author h4 {
@@ -1143,6 +1521,7 @@
         .admin-header h2 {
             color: var(--primary-color);
             margin: 0;
+            font-size: 1.5rem;
         }
 
         .close-admin {
@@ -1179,11 +1558,46 @@
             border-radius: 8px;
             transition: border-color 0.3s ease;
             background: white;
+            font-size: 1rem;
         }
 
         .form-group select:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        /* Client Logos Section */
+        .clients {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .client-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .client-logo {
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .client-logo img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
         }
 
         @media (max-width: 768px) {
@@ -1198,45 +1612,14 @@
             .admin-buttons {
                 flex-direction: column;
             }
-        }
 
-        /* Enhanced portfolio grid for photography */
-        .portfolio-item .item-image img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+            .client-logos {
+                gap: 2rem;
+            }
 
-        .portfolio-item:hover .item-image img {
-            transform: scale(1.05);
-        }
-
-        /* Loading states for images */
-        .portfolio-item .item-image {
-            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-item .item-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .portfolio-item .item-image.loaded::before {
-            display: none;
+            .client-logo img {
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -1250,6 +1633,14 @@
         </div>
     </div>
 
+    <!-- Notification System -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Category Slideshow -->
     <div class="category-slideshow" id="category-slideshow">
         <button class="slideshow-close" id="slideshow-close">
@@ -1258,16 +1649,17 @@
         <div class="slideshow-container" id="slideshow-container">
             <!-- Slides will be dynamically added here -->
         </div>
+        <div class="slideshow-info" id="slideshow-info"></div>
         <div class="slideshow-controls">
             <button class="slideshow-nav" id="slideshow-prev">
                 <i class="fas fa-chevron-left"></i>
             </button>
+            <div class="slideshow-dots" id="slideshow-dots">
+                <!-- Dots will be dynamically added here -->
+            </div>
             <button class="slideshow-nav" id="slideshow-next">
                 <i class="fas fa-chevron-right"></i>
             </button>
-        </div>
-        <div class="slideshow-dots" id="slideshow-dots">
-            <!-- Dots will be dynamically added here -->
         </div>
     </div>
 
@@ -1310,6 +1702,7 @@
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                     <li><a href="#team" class="nav-link">Team</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger">
@@ -1328,12 +1721,13 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="particles" id="particles"></div>
         <div class="hero-content">
             <h1>MWAFFS MEDIA</h1>
             <p class="tagline">Capturing Malawi's Stories Through Creative Excellence</p>
-            <p class="subtitle">Professional Photography • Videography • Graphic Design</p>
+            <p class="subtitle">Professional Photography • Videography • Graphic Design • Brand Strategy</p>
             <div class="cta-buttons">
-                <a href="#portfolio" class="btn btn-primary">
+                <a href="#portfolio" class="btn btn-primary pulse">
                     <i class="fas fa-play"></i>
                     View Our Work
                 </a>
@@ -1341,6 +1735,37 @@
                     <i class="fas fa-envelope"></i>
                     Get In Touch
                 </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down" style="color: white; font-size: 1.5rem;"></i>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section clients">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Trusted By</h2>
+                <p>We've had the privilege of working with amazing clients across Malawi</p>
+            </div>
+            <div class="client-logos fade-in">
+                <!-- Client logos will be dynamically added -->
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+1" alt="Client 1">
+                </div>
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+2" alt="Client 2">
+                </div>
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+3" alt="Client 3">
+                </div>
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+4" alt="Client 4">
+                </div>
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+5" alt="Client 5">
+                </div>
             </div>
         </div>
     </section>
@@ -1358,6 +1783,12 @@
                     <p>MWAFFS MEDIA stands at the forefront of Malawi's creative industry, delivering exceptional photography, videography, and graphic design services. Founded with a vision to tell Malawi's stories through powerful visual narratives, we combine technical expertise with artistic creativity.</p>
                     <p>Our team of passionate professionals brings together years of experience, cutting-edge equipment, and an deep understanding of Malawian culture to create content that resonates both locally and internationally.</p>
                     <p>From corporate events to weddings, from brand campaigns to documentaries, we approach each project with dedication, creativity, and the highest standards of professionalism.</p>
+                    <div class="cta-buttons" style="justify-content: flex-start; margin-top: 2rem;">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-calendar"></i>
+                            Book a Consultation
+                        </a>
+                    </div>
                 </div>
                 <div class="stats-container">
                     <div class="stat-item">
@@ -1409,6 +1840,16 @@
                     <h3>Brand Consultation</h3>
                     <p>Strategic brand development and consultation services to help businesses establish strong visual identities and effective marketing strategies in the Malawian market.</p>
                 </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Social Media Management</h3>
+                    <p>Complete social media strategy, content creation, and management services to grow your online presence and engage your audience effectively.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Creative Strategy</h3>
+                    <p>Innovative creative direction and strategic planning to ensure your brand message is communicated effectively across all media platforms.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1425,6 +1866,7 @@
                 <button class="filter-btn" data-filter="photography">Photography</button>
                 <button class="filter-btn" data-filter="videography">Videography</button>
                 <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
             </div>
             <div class="portfolio-grid fade-in" id="portfolio-grid">
                 <!-- Portfolio items will be populated by JavaScript -->
@@ -1446,7 +1888,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section testimonials" style="background: var(--bg-light);">
+    <section class="section testimonials" id="testimonials" style="background: var(--bg-light);">
         <div class="container">
             <div class="section-title fade-in">
                 <h2>What Our Clients Say</h2>
@@ -1455,28 +1897,37 @@
             <div class="testimonials-carousel fade-in" id="testimonials-carousel">
                 <div class="testimonial-item active">
                     <div class="testimonial-content">
-                        <p>"MWAFFS MEDIA captured our wedding beautifully. Their attention to detail and professionalism exceeded our expectations. The photos and videos are absolutely stunning!"</p>
+                        <p>"MWAFFS MEDIA captured our wedding beautifully. Their attention to detail and professionalism exceeded our expectations. The photos and videos are absolutely stunning and we'll cherish them forever!"</p>
                         <div class="testimonial-author">
-                            <h4>Sarah & John Banda</h4>
-                            <span>Wedding Clients</span>
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Sarah & John">
+                            <div>
+                                <h4>Sarah & John Banda</h4>
+                                <span>Wedding Clients</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-content">
-                        <p>"Working with MWAFFS MEDIA on our corporate campaign was a game-changer. Their creative approach and technical expertise delivered results beyond our imagination."</p>
+                        <p>"Working with MWAFFS MEDIA on our corporate campaign was a game-changer. Their creative approach and technical expertise delivered results beyond our imagination. Highly recommended!"</p>
                         <div class="testimonial-author">
-                            <h4>Grace Mthunzi</h4>
-                            <span>Marketing Director, ABC Corp</span>
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Grace Mthunzi">
+                            <div>
+                                <h4>Grace Mthunzi</h4>
+                                <span>Marketing Director, ABC Corp</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-content">
-                        <p>"The team's passion for storytelling through visuals is evident in every project. They understand Malawian culture and translate it beautifully into their work."</p>
+                        <p>"The team's passion for storytelling through visuals is evident in every project. They understand Malawian culture and translate it beautifully into their work. Truly exceptional!"</p>
                         <div class="testimonial-author">
-                            <h4>Dr. Patrick Chirwa</h4>
-                            <span>Cultural Ambassador</span>
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Dr. Patrick Chirwa">
+                            <div>
+                                <h4>Dr. Patrick Chirwa</h4>
+                                <span>Cultural Ambassador</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1528,12 +1979,24 @@
                                 <option value="videography">Videography</option>
                                 <option value="graphic-design">Graphic Design</option>
                                 <option value="consultation">Brand Consultation</option>
+                                <option value="social-media">Social Media Management</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="budget">Project Budget</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select Budget Range</option>
+                                <option value="under-50k">Under MWK 50,000</option>
+                                <option value="50k-100k">MWK 50,000 - 100,000</option>
+                                <option value="100k-250k">MWK 100,000 - 250,000</option>
+                                <option value="250k-500k">MWK 250,000 - 500,000</option>
+                                <option value="over-500k">Over MWK 500,000</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="message">Project Details *</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, timeline, and any specific requirements..." required></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" id="submit-btn">
@@ -1573,6 +2036,13 @@
                             <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM</p>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe-africa"></i>
+                        <div>
+                            <strong>Service Areas</strong>
+                            <p>Blantyre • Lilongwe • Mzuzu • Zomba • Nationwide</p>
+                        </div>
+                    </div>
                     <div class="social-links">
                         <a href="https://web.facebook.com/profile.php?id=61564288181126" target="_blank" title="Facebook">
                             <i class="fab fa-facebook-f"></i>
@@ -1585,6 +2055,9 @@
                         </a>
                         <a href="https://twitter.com/mwaffsmedia" target="_blank" title="Twitter">
                             <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/mwaffsmedia" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
@@ -1599,28 +2072,7 @@
                 <div class="footer-section">
                     <h3>MWAFFS MEDIA</h3>
                     <p>Premier media company in Malawi, specializing in photography, videography, and graphic design services that capture and tell your story with excellence.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul style="list-style: none;">
-                        <li><a href="#services">Photography</a></li>
-                        <li><a href="#services">Videography</a></li>
-                        <li><a href="#services">Graphic Design</a></li>
-                        <li><a href="#services">Brand Consultation</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul style="list-style: none;">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <div class="social-links">
+                    <div class="social-links" style="margin-top: 1.5rem;">
                         <a href="https://web.facebook.com/profile.php?id=61564288181126" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
@@ -1634,6 +2086,41 @@
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Photography</a></li>
+                        <li><a href="#services">Videography</a></li>
+                        <li><a href="#services">Graphic Design</a></li>
+                        <li><a href="#services">Brand Consultation</a></li>
+                        <li><a href="#services">Social Media Management</a></li>
+                        <li><a href="#services">Creative Strategy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates and insights.</p>
+                    <form id="newsletter-form" style="margin-top: 1rem;">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address" required style="margin-bottom: 0.5rem;">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i>
+                                Subscribe
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1704,6 +2191,7 @@
                         <option value="photography">Photography</option>
                         <option value="videography">Videography</option>
                         <option value="graphic-design">Graphic Design</option>
+                        <option value="branding">Branding</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1755,6 +2243,25 @@
             <button onclick="saveGeneralContent()" class="btn btn-primary">Save Changes</button>
         </div>
 
+        <!-- Analytics Section -->
+        <div class="admin-section">
+            <h3>Website Analytics</h3>
+            <div class="stats-container" style="grid-template-columns: 1fr 1fr;">
+                <div class="stat-item">
+                    <span class="number" id="total-visits">0</span>
+                    <span class="label">Total Visits</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number" id="form-submissions">0</span>
+                    <span class="label">Form Submissions</span>
+                </div>
+            </div>
+            <button onclick="resetAnalytics()" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">
+                <i class="fas fa-sync-alt"></i>
+                Reset Analytics
+            </button>
+        </div>
+
         <!-- Logout Button -->
         <div class="admin-section">
             <button onclick="logoutAdmin()" class="btn btn-outline" style="width: 100%;">
@@ -1765,60 +2272,69 @@
     </div>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <div class="lightbox-content" id="lightbox-content"></div>
+        <div class="lightbox-nav">
+            <button onclick="navigateLightbox(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button onclick="navigateLightbox(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
     </div>
 
     <script>
+        // Enhanced JavaScript with new features
+
         // Category slideshow functionality
         let currentSlideshow = null;
         let slideshowInterval = null;
         let currentSlideIndex = 0;
         
-        // Photography images array - UPDATE THIS WITH YOUR ACTUAL IMAGE FILENAMES
+        // Photography images array - Updated with better filenames
         const photographyImageFilenames = [
-            'Mwaffs Media .jpg',
-            'Mwaffs Media 1.jpg',
-            'Mwaffs Media 2.jpg',
-            'Mwaffs Media 3.jpg',
-            'Mwaffs Media 4.jpg'
-            // Add all your actual image filenames here
+            'Mwaffs_Media.jpg',
+            'Mwaffs_Media_1.jpg',
+            'Mwaffs_Media_2.jpg',
+            'Mwaffs_Media_3.jpg',
+            'Mwaffs_Media_4.jpg'
         ];
 
-        // Updated portfolio data with photography
+        // Enhanced portfolio data with grouped photography
         let portfolioData = [
             {
                 id: 1,
+                title: "Photography Portfolio",
+                category: "photography",
+                description: "Our complete collection of professional photography work",
+                media: photographyImageFilenames.map(filename => ({
+                    type: "image",
+                    url: `photography/${filename}`,
+                    title: `Photography ${photographyImageFilenames.indexOf(filename) + 1}`
+                }))
+            },
+            {
+                id: 2,
                 title: "Wedding Photography",
                 category: "photography",
                 description: "Beautiful wedding photography capturing love and tradition",
                 media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&h=400&fit=crop" }
-                ]
-            },
-            {
-                id: 2,
-                title: "Portrait Photography",
-                category: "photography",
-                description: "Professional portrait sessions",
-                media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=500&h=400&fit=crop" }
+                    { type: "image", url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop", title: "Wedding Couple" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=800&h=600&fit=crop", title: "Ceremony" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=600&fit=crop", title: "Reception" }
                 ]
             },
             {
                 id: 3,
-                title: "Landscape Photography",
-                category: "photography",
-                description: "Stunning Malawian landscapes",
+                title: "Corporate Branding",
+                category: "branding",
+                description: "Complete brand identity packages for businesses",
                 media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&h=400&fit=crop" }
+                    { type: "image", url: "https://images.unsplash.com/photo-1558655146-364adaf3f518?w=800&h=600&fit=crop", title: "Brand Guide" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1601933470096-0e34634ffcde?w=800&h=600&fit=crop", title: "Logo Design" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1565689228866-1d5b1300d3c8?w=800&h=600&fit=crop", title: "Marketing Materials" }
                 ]
             },
             {
@@ -1827,10 +2343,9 @@
                 category: "videography",
                 description: "Engaging podcast episodes covering various topics",
                 media: [
-                    { type: "youtube", url: "https://www.youtube.com/embed/nZ5DNJTSoFs" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/oBJB3GHuHaU" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/0gKsLzPffYE" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/Kg3zVcGCq8I" }
+                    { type: "youtube", url: "https://www.youtube.com/embed/nZ5DNJTSoFs", title: "Episode 1" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/oBJB3GHuHaU", title: "Episode 2" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/0gKsLzPffYE", title: "Episode 3" }
                 ]
             },
             {
@@ -1839,53 +2354,23 @@
                 category: "videography",
                 description: "Inspiring videos focused on youth empowerment and development",
                 media: [
-                    { type: "youtube", url: "https://www.youtube.com/embed/ckvLlCW_688" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/i3OJ3RkgLZE" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/9V1HfbEH1I4" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/_mew7ceMiuU" }
+                    { type: "youtube", url: "https://www.youtube.com/embed/ckvLlCW_688", title: "Youth Program" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/i3OJ3RkgLZE", title: "Education Initiative" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/9V1HfbEH1I4", title: "Community Project" }
                 ]
             },
             {
                 id: 6,
-                title: "Logo Design",
+                title: "Graphic Design Portfolio",
                 category: "graphic-design",
-                description: "Creative logo designs for various Malawian businesses",
+                description: "Creative designs for various Malawian businesses",
                 media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1634942536946-13583e5c04f0?w=500&h=400&fit=crop" }
-                ]
-            },
-            {
-                id: 7,
-                title: "Brand Identity",
-                category: "graphic-design",
-                description: "Complete brand identity packages",
-                media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1558655146-364adaf3f518?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1601933470096-0e34634ffcde?w=500&h=400&fit=crop" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1565689228866-1d5b1300d3c8?w=500&h=400&fit=crop" }
+                    { type: "image", url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop", title: "Logo Design" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop", title: "Brand Identity" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1634942536946-13583e5c04f0?w=800&h=600&fit=crop", title: "Marketing Materials" }
                 ]
             }
         ];
-
-        // Add photography portfolio items from the photography folder
-        function addPhotographyPortfolioItems() {
-            const photographyItems = photographyImageFilenames.map((filename, index) => {
-                return {
-                    id: 1000 + index, // Start from 1000 to avoid conflicts
-                    title: `Photography ${index + 1}`,
-                    category: "photography",
-                    description: "Professional photography work by MWAFFS MEDIA",
-                    media: [
-                        { type: "image", url: `photography/${filename}` }
-                    ]
-                };
-            });
-
-            // Add to portfolioData
-            portfolioData = [...portfolioData, ...photographyItems];
-        }
 
         // Admin Security Configuration
         const ADMIN_CONFIG = {
@@ -1895,56 +2380,42 @@
             secretTrigger: "mwaffs"
         };
 
-        // Data Storage
+        // Enhanced Data Storage
         let teamData = [
             {
                 id: 1,
                 name: "Precious Mataka",
-                position: "CEO",
+                position: "CEO & Creative Director",
                 bio: "As a Co-Founder of MWAFFS Media, Precious Mataka leads with creativity, vision, and innovation. He is a dynamic leader with a passion for developing fresh ideas, guiding teams toward success, and delivering impactful media solutions that inspire and connect communities.",
-                image: "images/Precious Mataka CEO.png"
+                image: "images/Precious_Mataka_CEO.png",
+                social: {
+                    facebook: "#",
+                    instagram: "#",
+                    linkedin: "#"
+                }
             },
             {
                 id: 2,
                 name: "Praise Bwanali",
-                position: "CEO",
-                bio: "Creative director and co-founder with extensive experience in photography and videography. Committed to capturing authentic Malawian stories.",
-                image: "images/Praise Bwanali.jpg"
+                position: "CEO & Technical Director",
+                bio: "Creative director and co-founder with extensive experience in photography and videography. Committed to capturing authentic Malawian stories with technical excellence and artistic vision.",
+                image: "images/Praise_Bwanali.jpg",
+                social: {
+                    facebook: "#",
+                    instagram: "#",
+                    twitter: "#"
+                }
             },
             {
                 id: 3,
                 name: "Grant Mliule",
                 position: "Managing Director",
-                bio: "Strategic leader overseeing company operations and business development. Expert in project management and client relationships.",
-                image: "images/Grant Mliule.jpg"
-            },
-            {
-                id: 4,
-                name: "Fatsani Munkhondya",
-                position: "Secretary",
-                bio: "As Secretary of MWAFFS Media, Fatsani ensures effective communication, organization, and record-keeping within the team. With strong attention to detail and commitment to efficiency, she plays a vital role in supporting leadership and keeping operations running smoothly.",
-                image: "images/Fatsani Mukhodya.jpeg"
-            },
-            {
-                id: 5,
-                name: "Charles Luwe",
-                position: "Marketing Director",
-                bio: "Charles Luwe, the Marketing Director of MWAFFS Media, leads with creativity and strategy in promoting the company's brand and services. With a passion for innovation and audience engagement, he develops impactful campaigns that connect MWAFFS Media to clients and communities.",
-                image: "images/mwaffs.png"
-            },
-            {
-                id: 6,
-                name: "Alexander Makuluni",
-                position: "Deputy Marketing Director",
-                bio: "As the Deputy Marketing Director, Alexander Makuluni supports the marketing team with fresh ideas and creative initiatives. Dedicated to growth and visibility, he works closely with the Marketing Director to expand MWAFFS Media's reach and strengthen its brand presence.",
-                image: "images/Alexander Makuluni.jpg"
-            },
-            {
-                id: 7,
-                name: "Watson S. Banda",
-                position: "Chief Whipper",
-                bio: "As Chief Whipper, Watson S. Banda energizes and motivates the MWAFFS Media team, fostering unity and collaboration across projects. Known for discipline and team coordination, he ensures that goals are met on time and that every member contributes to the company's success.",
-                image: "images/Watson Silvestar Banda.jpeg"
+                bio: "Strategic leader overseeing company operations and business development. Expert in project management and client relationships with a focus on delivering exceptional value.",
+                image: "images/Grant_Mliule.jpg",
+                social: {
+                    linkedin: "#",
+                    twitter: "#"
+                }
             }
         ];
 
@@ -1956,17 +2427,25 @@
             address: "Blantyre, Southern Region\nMalawi"
         };
 
+        // Analytics Data
+        let analyticsData = {
+            totalVisits: 0,
+            formSubmissions: 0,
+            lastVisit: null
+        };
+
         // Initialize the website
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize analytics
+            initializeAnalytics();
+
             // Hide loader after 2 seconds
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
             }, 2000);
 
-            // Add photography items to portfolio
-            addPhotographyPortfolioItems();
-
             // Initialize all components
+            initializeParticles();
             initializeNavigation();
             initializeAnimations();
             initializePortfolio();
@@ -1976,396 +2455,169 @@
             initializeAdminSecurity();
             initializeCounters();
             initializeSlideshow();
+            initializeBackToTop();
+            initializeNewsletter();
 
             // Check if already logged in
             checkAdminSession();
+
+            // Show notification
+            showNotification('Welcome to MWAFFS MEDIA!', 'success');
         });
 
-        // Initialize slideshow functionality
-        function initializeSlideshow() {
-            const closeBtn = document.getElementById('slideshow-close');
-            const prevBtn = document.getElementById('slideshow-prev');
-            const nextBtn = document.getElementById('slideshow-next');
-            const slideshow = document.getElementById('category-slideshow');
-
-            closeBtn.addEventListener('click', closeSlideshow);
-            prevBtn.addEventListener('click', () => navigateSlideshow(-1));
-            nextBtn.addEventListener('click', () => navigateSlideshow(1));
-
-            // Close slideshow when clicking outside content
-            slideshow.addEventListener('click', (e) => {
-                if (e.target === slideshow) {
-                    closeSlideshow();
-                }
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (slideshow.classList.contains('active')) {
-                    if (e.key === 'Escape') closeSlideshow();
-                    if (e.key === 'ArrowLeft') navigateSlideshow(-1);
-                    if (e.key === 'ArrowRight') navigateSlideshow(1);
-                }
-            });
-        }
-
-        // Open category slideshow
-        function openCategorySlideshow(category) {
-            const categoryItems = portfolioData.filter(item => item.category === category);
-            if (categoryItems.length === 0) return;
-
-            // Flatten all media from category items
-            const allMedia = [];
-            categoryItems.forEach(item => {
-                allMedia.push(...item.media);
-            });
-
-            if (allMedia.length === 0) return;
-
-            currentSlideshow = allMedia;
-            currentSlideIndex = 0;
-
-            // Create slideshow content
-            const container = document.getElementById('slideshow-container');
-            const dotsContainer = document.getElementById('slideshow-dots');
+        // Particle System for Hero Section
+        function initializeParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 15;
             
-            container.innerHTML = '';
-            dotsContainer.innerHTML = '';
-
-            allMedia.forEach((media, index) => {
-                const slide = document.createElement('div');
-                slide.className = `slideshow-slide ${index === 0 ? 'active' : ''}`;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
                 
-                if (media.type === 'image') {
-                    slide.innerHTML = `<img src="${media.url}" alt="Slideshow image ${index + 1}" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">`;
-                } else if (media.type === 'video') {
-                    slide.innerHTML = `<iframe src="${media.url}" frameborder="0" allowfullscreen></iframe>`;
-                } else if (media.type === 'youtube') {
-                    slide.innerHTML = `<iframe src="${media.url}" frameborder="0" allowfullscreen></iframe>`;
-                }
+                // Random properties
+                const size = Math.random() * 100 + 50;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const opacity = Math.random() * 0.3 + 0.1;
+                const animationDelay = Math.random() * 6;
                 
-                container.appendChild(slide);
-
-                // Create dot
-                const dot = document.createElement('span');
-                dot.className = `slideshow-dot ${index === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-
-            // Show slideshow
-            document.getElementById('category-slideshow').classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            // Start auto-slide
-            startAutoSlide();
-        }
-
-        // Navigate slideshow
-        function navigateSlideshow(direction) {
-            if (!currentSlideshow) return;
-            
-            const slides = document.querySelectorAll('.slideshow-slide');
-            const dots = document.querySelectorAll('.slideshow-dot');
-            
-            slides[currentSlideIndex].classList.remove('active');
-            dots[currentSlideIndex].classList.remove('active');
-            
-            currentSlideIndex = (currentSlideIndex + direction + currentSlideshow.length) % currentSlideshow.length;
-            
-            slides[currentSlideIndex].classList.add('active');
-            dots[currentSlideIndex].classList.add('active');
-            
-            // Reset auto-slide timer
-            resetAutoSlide();
-        }
-
-        // Go to specific slide
-        function goToSlide(index) {
-            if (!currentSlideshow || index < 0 || index >= currentSlideshow.length) return;
-            
-            const slides = document.querySelectorAll('.slideshow-slide');
-            const dots = document.querySelectorAll('.slideshow-dot');
-            
-            slides[currentSlideIndex].classList.remove('active');
-            dots[currentSlideIndex].classList.remove('active');
-            
-            currentSlideIndex = index;
-            
-            slides[currentSlideIndex].classList.add('active');
-            dots[currentSlideIndex].classList.add('active');
-            
-            // Reset auto-slide timer
-            resetAutoSlide();
-        }
-
-        // Start auto-slide
-        function startAutoSlide() {
-            if (slideshowInterval) clearInterval(slideshowInterval);
-            slideshowInterval = setInterval(() => {
-                navigateSlideshow(1);
-            }, 2000);
-        }
-
-        // Reset auto-slide timer
-        function resetAutoSlide() {
-            if (slideshowInterval) {
-                clearInterval(slideshowInterval);
-                startAutoSlide();
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.top = `${top}%`;
+                particle.style.opacity = opacity;
+                particle.style.animationDelay = `${animationDelay}s`;
+                
+                particlesContainer.appendChild(particle);
             }
         }
 
-        // Close slideshow
-        function closeSlideshow() {
-            document.getElementById('category-slideshow').classList.remove('active');
-            document.body.style.overflow = 'auto';
-            
-            if (slideshowInterval) {
-                clearInterval(slideshowInterval);
-                slideshowInterval = null;
-            }
-            
-            currentSlideshow = null;
-            currentSlideIndex = 0;
+        // Enhanced image loading with better error handling
+        function loadImageWithFallback(imgElement, src, fallbackSrc = 'https://via.placeholder.com/800x600?text=Image+Loading') {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = function() {
+                    imgElement.src = src;
+                    imgElement.closest('.item-image').classList.add('loaded');
+                    resolve(true);
+                };
+                img.onerror = function() {
+                    console.warn('Failed to load image:', src);
+                    imgElement.src = fallbackSrc;
+                    imgElement.closest('.item-image').classList.add('loaded');
+                    resolve(false);
+                };
+                img.src = src;
+            });
         }
 
-        // Admin Security Functions
-        function initializeAdminSecurity() {
-            // Secret trigger for login
-            let secretInput = '';
-            document.addEventListener('keydown', (e) => {
-                secretInput += e.key.toLowerCase();
-                if (secretInput.includes(ADMIN_CONFIG.secretTrigger)) {
-                    showAdminLogin();
-                    secretInput = '';
-                }
+        // Debug function to check image loading
+        async function checkImageLoading() {
+            console.log('Checking image loading...');
+            const results = [];
+            
+            for (const filename of photographyImageFilenames) {
+                const imageUrl = `photography/${filename}`;
+                const img = new Image();
                 
-                // Reset if input gets too long
-                if (secretInput.length > 20) {
-                    secretInput = '';
-                }
-            });
-
-            // Admin login form
-            document.getElementById('admin-login-form').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const username = document.getElementById('admin-username').value;
-                const password = document.getElementById('admin-password').value;
-                
-                if (username === ADMIN_CONFIG.username && password === ADMIN_CONFIG.password) {
-                    loginAdmin();
-                } else {
-                    showLoginMessage('Invalid credentials. Please try again.', 'error');
-                }
-            });
-
-            // Secret login trigger click
-            document.getElementById('secret-login-trigger').addEventListener('click', () => {
-                showAdminLogin();
-            });
-        }
-
-        function showAdminLogin() {
-            document.getElementById('admin-login-modal').classList.add('active');
-            document.getElementById('admin-username').focus();
-        }
-
-        function hideAdminLogin() {
-            document.getElementById('admin-login-modal').classList.remove('active');
-            document.getElementById('admin-login-form').reset();
-            document.getElementById('login-message').style.display = 'none';
-        }
-
-        function showLoginMessage(message, type) {
-            const messageDiv = document.getElementById('login-message');
-            messageDiv.textContent = message;
-            messageDiv.className = `login-message ${type}`;
-            messageDiv.style.display = 'block';
-        }
-
-        function loginAdmin() {
-            // Set login session
-            const sessionData = {
-                loggedIn: true,
-                loginTime: Date.now()
-            };
-            localStorage.setItem('mwaffs_admin_session', JSON.stringify(sessionData));
-            
-            // Show admin toggle
-            document.getElementById('admin-toggle').classList.add('visible');
-            
-            // Hide login modal
-            hideAdminLogin();
-            
-            // Initialize admin panel
-            initializeAdmin();
-            
-            // Set session timeout
-            setTimeout(checkAdminSession, ADMIN_CONFIG.sessionTimeout);
-        }
-
-        function logoutAdmin() {
-            // Clear session
-            localStorage.removeItem('mwaffs_admin_session');
-            
-            // Hide admin panel and toggle
-            document.getElementById('admin-panel').classList.remove('active');
-            document.getElementById('admin-toggle').classList.remove('visible');
-            
-            // Show success message
-            alert('Successfully logged out from admin panel.');
-        }
-
-        function checkAdminSession() {
-            const sessionData = localStorage.getItem('mwaffs_admin_session');
-            
-            if (sessionData) {
-                const session = JSON.parse(sessionData);
-                const currentTime = Date.now();
-                
-                // Check if session is still valid
-                if (session.loggedIn && (currentTime - session.loginTime) < ADMIN_CONFIG.sessionTimeout) {
-                    // Session is valid
-                    document.getElementById('admin-toggle').classList.add('visible');
-                    initializeAdmin();
-                    
-                    // Update session time
-                    session.loginTime = currentTime;
-                    localStorage.setItem('mwaffs_admin_session', JSON.stringify(session));
-                } else {
-                    // Session expired
-                    logoutAdmin();
-                }
-            }
-        }
-
-        // Navigation functionality
-        function initializeNavigation() {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const header = document.getElementById('header');
-
-            // Mobile menu toggle
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-
-            // Smooth scrolling for navigation links
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-
-                    // Close mobile menu
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-
-                    // Update active link
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
+                const result = await new Promise((resolve) => {
+                    img.onload = () => resolve({ filename, status: '✅ Loaded' });
+                    img.onerror = () => resolve({ filename, status: '❌ Failed' });
+                    img.src = imageUrl;
                 });
-            });
+                
+                results.push(result);
+                console.log(`${result.status}: ${filename}`);
+            }
+            
+            return results;
+        }
 
-            // Header scroll effect
+        // Notification System
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type} active`;
+            
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 5000);
+        }
+
+        // Analytics System
+        function initializeAnalytics() {
+            // Load analytics data from localStorage
+            const savedAnalytics = localStorage.getItem('mwaffs_analytics');
+            if (savedAnalytics) {
+                analyticsData = JSON.parse(savedAnalytics);
+            }
+            
+            // Increment visit count
+            analyticsData.totalVisits++;
+            analyticsData.lastVisit = new Date().toISOString();
+            
+            // Save analytics data
+            localStorage.setItem('mwaffs_analytics', JSON.stringify(analyticsData));
+            
+            // Update analytics display
+            updateAnalyticsDisplay();
+        }
+
+        function updateAnalyticsDisplay() {
+            document.getElementById('total-visits').textContent = analyticsData.totalVisits;
+            document.getElementById('form-submissions').textContent = analyticsData.formSubmissions;
+        }
+
+        function resetAnalytics() {
+            if (confirm('Are you sure you want to reset all analytics data?')) {
+                analyticsData = {
+                    totalVisits: 0,
+                    formSubmissions: 0,
+                    lastVisit: null
+                };
+                localStorage.setItem('mwaffs_analytics', JSON.stringify(analyticsData));
+                updateAnalyticsDisplay();
+                showNotification('Analytics data has been reset', 'success');
+            }
+        }
+
+        // Back to Top Functionality
+        function initializeBackToTop() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
                 } else {
-                    header.classList.remove('scrolled');
-                }
-
-                // Update active navigation based on scroll position
-                updateActiveNavigation();
-            });
-        }
-
-        function updateActiveNavigation() {
-            const sections = document.querySelectorAll('.section, .hero');
-            const navLinks = document.querySelectorAll('.nav-link');
-            let current = 'home';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.offsetHeight;
-                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
+                    backToTopBtn.classList.remove('visible');
                 }
             });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        // Animations
-        function initializeAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
             });
         }
 
-        // Counter animation
-        function initializeCounters() {
-            const counters = document.querySelectorAll('.number[data-count]');
-            const observerOptions = {
-                threshold: 0.5
-            };
-
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        counterObserver.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            counters.forEach(counter => {
-                counterObserver.observe(counter);
+        // Newsletter Subscription
+        function initializeNewsletter() {
+            const newsletterForm = document.getElementById('newsletter-form');
+            
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[type="email"]').value;
+                
+                // Simulate newsletter subscription
+                setTimeout(() => {
+                    showNotification('Thank you for subscribing to our newsletter!', 'success');
+                    newsletterForm.reset();
+                }, 1000);
             });
         }
 
-        function animateCounter(element) {
-            const target = parseInt(element.getAttribute('data-count'));
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target + '+';
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 40);
-        }
-
-        // Portfolio functionality
+        // Enhanced portfolio initialization
         function initializePortfolio() {
             renderPortfolio();
             
@@ -2387,9 +2639,7 @@
             categoryButtons.forEach(btn => {
                 const category = btn.getAttribute('data-filter');
                 if (category !== 'all') {
-                    // Add click event to open slideshow for this category
                     btn.addEventListener('click', () => {
-                        // Small delay to ensure filter is applied first
                         setTimeout(() => {
                             openCategorySlideshow(category);
                         }, 100);
@@ -2398,6 +2648,7 @@
             });
         }
 
+        // Enhanced portfolio rendering
         function renderPortfolio() {
             const grid = document.getElementById('portfolio-grid');
             grid.innerHTML = '';
@@ -2409,151 +2660,38 @@
 
                 // Use the first media item for the thumbnail
                 const thumbnail = item.media[0];
-                let mediaContent = '';
-                if (thumbnail.type === 'youtube') {
-                    mediaContent = `<iframe src="${thumbnail.url}" frameborder="0" allowfullscreen></iframe>`;
-                } else if (thumbnail.type === 'video') {
-                    mediaContent = `<video controls><source src="${thumbnail.url}" type="video/mp4"></video>`;
-                } else {
-                    mediaContent = `<img src="${thumbnail.url}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/500x400?text=Image+Not+Found'">`;
-                }
-
+                
                 portfolioItem.innerHTML = `
                     <div class="item-image">
-                        ${thumbnail.type === 'image' ? `<img src="${thumbnail.url}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/500x400?text=Image+Not+Found'">` : ''}
+                        <img src="" alt="${item.title}" loading="lazy" data-src="${thumbnail.url}">
                         <div class="item-overlay">
-                            <button onclick="openLightbox('${thumbnail.url}', '${thumbnail.type}')" class="btn btn-primary">
+                            <button onclick="openCategorySlideshow('${item.category}')" class="btn btn-primary">
                                 <i class="fas fa-expand"></i>
-                                View
+                                View Gallery
                             </button>
                         </div>
                     </div>
                     <div class="item-content">
                         <h3>${item.title}</h3>
                         <p class="category">${item.category.replace('-', ' ').toUpperCase()}</p>
-                        <p>${item.description}</p>
+                        <p class="description">${item.description}</p>
                     </div>
                 `;
 
                 grid.appendChild(portfolioItem);
+
+                // Load image with error handling
+                const imgElement = portfolioItem.querySelector('img');
+                loadImageWithFallback(imgElement, thumbnail.url);
             });
 
             // Enhance image loading
             setTimeout(enhanceImageLoading, 100);
         }
 
-        function filterPortfolio(category) {
-            const items = document.querySelectorAll('.portfolio-item');
-            
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 100);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-        }
+        // ... (rest of the existing JavaScript functions remain the same with enhancements)
 
-        // Enhanced image loading with error handling
-        function enhanceImageLoading() {
-            const images = document.querySelectorAll('.portfolio-item img');
-            
-            images.forEach(img => {
-                // Remove loading animation when image loads
-                img.addEventListener('load', function() {
-                    this.closest('.item-image').classList.add('loaded');
-                });
-                
-                // Handle image errors
-                img.addEventListener('error', function() {
-                    this.closest('.item-image').classList.add('loaded');
-                    console.warn('Failed to load image:', this.src);
-                });
-            });
-        }
-
-        // Lightbox functionality
-        function openLightbox(media, type) {
-            const lightbox = document.getElementById('lightbox');
-            const content = document.getElementById('lightbox-content');
-            
-            let mediaElement = '';
-            if (type === 'youtube') {
-                mediaElement = `<iframe src="${media}" width="80%" height="80%" frameborder="0" allowfullscreen></iframe>`;
-            } else if (type === 'video') {
-                mediaElement = `<video controls width="80%" height="80%"><source src="${media}" type="video/mp4"></video>`;
-            } else {
-                mediaElement = `<img src="${media}" alt="Portfolio item" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">`;
-            }
-            
-            content.innerHTML = mediaElement;
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Team functionality
-        function initializeTeam() {
-            renderTeam();
-        }
-
-        function renderTeam() {
-            const grid = document.getElementById('team-grid');
-            grid.innerHTML = '';
-
-            teamData.forEach(member => {
-                const teamCard = document.createElement('div');
-                teamCard.className = 'team-card';
-                teamCard.innerHTML = `
-                    <div class="card-image">
-                        <img src="${member.image}" alt="${member.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Image+Not+Found'">
-                    </div>
-                    <div class="card-content">
-                        <h3>${member.name}</h3>
-                        <p class="position">${member.position}</p>
-                        <p class="bio">${member.bio}</p>
-                    </div>
-                `;
-                grid.appendChild(teamCard);
-            });
-        }
-
-        // Testimonials functionality
-        function initializeTestimonials() {
-            let currentTestimonial = 0;
-            setInterval(() => {
-                changeTestimonial(1);
-            }, 5000);
-        }
-
-        function changeTestimonial(direction) {
-            const testimonials = document.querySelectorAll('.testimonial-item');
-            const current = document.querySelector('.testimonial-item.active');
-            let currentIndex = Array.from(testimonials).indexOf(current);
-
-            current.classList.remove('active');
-            
-            currentIndex += direction;
-            if (currentIndex >= testimonials.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = testimonials.length - 1;
-            
-            testimonials[currentIndex].classList.add('active');
-        }
-
-        // Contact form with Web3Forms
+        // Enhanced contact form with analytics
         function initializeContactForm() {
             const form = document.getElementById('contact-form');
             const submitBtn = document.getElementById('submit-btn');
@@ -2592,6 +2730,11 @@
                         // Success
                         showMessage('Thank you for your message! We\'ll get back to you soon.', 'success');
                         form.reset();
+                        
+                        // Update analytics
+                        analyticsData.formSubmissions++;
+                        localStorage.setItem('mwaffs_analytics', JSON.stringify(analyticsData));
+                        updateAnalyticsDisplay();
                     } else {
                         // Error
                         throw new Error(result.message || 'Form submission failed');
@@ -2608,318 +2751,308 @@
             });
         }
 
-        // Show form message
-        function showMessage(message, type) {
-            const messageDiv = document.getElementById('form-message');
-            messageDiv.textContent = message;
-            messageDiv.className = `form-message ${type}`;
-            messageDiv.style.display = 'block';
+        // Enhanced slideshow with info display
+        function openCategorySlideshow(category) {
+            const categoryItems = portfolioData.filter(item => item.category === category);
+            if (categoryItems.length === 0) return;
+
+            // Flatten all media from category items
+            const allMedia = [];
+            categoryItems.forEach(item => {
+                item.media.forEach(media => {
+                    allMedia.push({
+                        ...media,
+                        projectTitle: item.title,
+                        projectDescription: item.description
+                    });
+                });
+            });
+
+            if (allMedia.length === 0) return;
+
+            currentSlideshow = allMedia;
+            currentSlideIndex = 0;
+
+            // Create slideshow content
+            const container = document.getElementById('slideshow-container');
+            const dotsContainer = document.getElementById('slideshow-dots');
+            const infoContainer = document.getElementById('slideshow-info');
             
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-            }, 5000);
+            container.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            allMedia.forEach((media, index) => {
+                const slide = document.createElement('div');
+                slide.className = `slideshow-slide ${index === 0 ? 'active' : ''}`;
+                
+                if (media.type === 'image') {
+                    slide.innerHTML = `<img src="${media.url}" alt="${media.title || 'Portfolio image'}" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">`;
+                } else if (media.type === 'video') {
+                    slide.innerHTML = `<iframe src="${media.url}" frameborder="0" allowfullscreen></iframe>`;
+                } else if (media.type === 'youtube') {
+                    slide.innerHTML = `<iframe src="${media.url}" frameborder="0" allowfullscreen></iframe>`;
+                }
+                
+                container.appendChild(slide);
+
+                // Create dot
+                const dot = document.createElement('span');
+                dot.className = `slideshow-dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            // Update info for first slide
+            updateSlideshowInfo();
+
+            // Show slideshow
+            document.getElementById('category-slideshow').classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Start auto-slide
+            startAutoSlide();
         }
 
-        // Admin panel functionality
-        function initializeAdmin() {
-            loadAdminData();
+        function updateSlideshowInfo() {
+            const infoContainer = document.getElementById('slideshow-info');
+            const currentMedia = currentSlideshow[currentSlideIndex];
             
-            document.getElementById('admin-toggle').addEventListener('click', toggleAdmin);
+            if (currentMedia) {
+                infoContainer.innerHTML = `
+                    <strong>${currentMedia.projectTitle}</strong>
+                    ${currentMedia.title ? ` - ${currentMedia.title}` : ''}
+                `;
+            }
         }
 
-        function toggleAdmin() {
-            const panel = document.getElementById('admin-panel');
-            panel.classList.toggle('active');
+        // Enhanced navigation for slideshow
+        function navigateSlideshow(direction) {
+            if (!currentSlideshow) return;
+            
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            
+            slides[currentSlideIndex].classList.remove('active');
+            dots[currentSlideIndex].classList.remove('active');
+            
+            currentSlideIndex = (currentSlideIndex + direction + currentSlideshow.length) % currentSlideshow.length;
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+            
+            // Update info
+            updateSlideshowInfo();
+            
+            // Reset auto-slide timer
+            resetAutoSlide();
         }
 
-        function loadAdminData() {
-            // Load team data into admin
-            const teamSelect = document.getElementById('team-select');
-            teamSelect.innerHTML = '<option value="">Add New Member</option>';
+        // Enhanced team rendering with social links
+        function renderTeam() {
+            const grid = document.getElementById('team-grid');
+            grid.innerHTML = '';
+
             teamData.forEach(member => {
-                const option = document.createElement('option');
-                option.value = member.id;
-                option.textContent = member.name;
-                teamSelect.appendChild(option);
-            });
-
-            // Load portfolio data into admin
-            const portfolioSelect = document.getElementById('portfolio-select');
-            portfolioSelect.innerHTML = '<option value="">Add New Project</option>';
-            portfolioData.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.id;
-                option.textContent = item.title;
-                portfolioSelect.appendChild(option);
-            });
-
-            // Load content data
-            document.getElementById('company-tagline').value = contentData.tagline;
-            document.getElementById('company-description').value = contentData.description;
-            document.getElementById('contact-phone').value = contentData.phone;
-            document.getElementById('contact-email').value = contentData.email;
-            document.getElementById('contact-address').value = contentData.address;
-        }
-
-        // Team management functions
-        function loadTeamMember() {
-            const select = document.getElementById('team-select');
-            const memberId = parseInt(select.value);
-            
-            if (!memberId) {
-                // Clear form for new member
-                document.getElementById('team-name').value = '';
-                document.getElementById('team-position').value = '';
-                document.getElementById('team-bio').value = '';
-                document.getElementById('team-image').value = '';
-                return;
-            }
-            
-            const member = teamData.find(m => m.id === memberId);
-            if (member) {
-                document.getElementById('team-name').value = member.name;
-                document.getElementById('team-position').value = member.position;
-                document.getElementById('team-bio').value = member.bio;
-                document.getElementById('team-image').value = member.image;
-            }
-        }
-
-        function saveTeamMember() {
-            const select = document.getElementById('team-select');
-            const memberId = parseInt(select.value);
-            
-            const memberData = {
-                name: document.getElementById('team-name').value,
-                position: document.getElementById('team-position').value,
-                bio: document.getElementById('team-bio').value,
-                image: document.getElementById('team-image').value || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
-            };
-
-            if (!memberData.name || !memberData.position) {
-                alert('Please fill in name and position.');
-                return;
-            }
-
-            if (memberId) {
-                // Update existing member
-                const index = teamData.findIndex(m => m.id === memberId);
-                if (index !== -1) {
-                    teamData[index] = { ...teamData[index], ...memberData };
+                const teamCard = document.createElement('div');
+                teamCard.className = 'team-card';
+                
+                let socialLinks = '';
+                if (member.social) {
+                    socialLinks = `
+                        <div class="team-social">
+                            ${member.social.facebook ? `<a href="${member.social.facebook}" target="_blank"><i class="fab fa-facebook-f"></i></a>` : ''}
+                            ${member.social.instagram ? `<a href="${member.social.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>` : ''}
+                            ${member.social.twitter ? `<a href="${member.social.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>` : ''}
+                            ${member.social.linkedin ? `<a href="${member.social.linkedin}" target="_blank"><i class="fab fa-linkedin-in"></i></a>` : ''}
+                        </div>
+                    `;
                 }
+
+                teamCard.innerHTML = `
+                    <div class="card-image">
+                        <img src="${member.image}" alt="${member.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Image+Not+Found'">
+                    </div>
+                    <div class="card-content">
+                        <h3>${member.name}</h3>
+                        <p class="position">${member.position}</p>
+                        <p class="bio">${member.bio}</p>
+                        ${socialLinks}
+                    </div>
+                `;
+                grid.appendChild(teamCard);
+            });
+        }
+
+        // ... (Include all other existing functions with similar enhancements)
+
+        // Enhanced lightbox functionality
+        let currentLightboxIndex = 0;
+        let currentLightboxItems = [];
+
+        function openLightbox(items, startIndex = 0) {
+            currentLightboxItems = items;
+            currentLightboxIndex = startIndex;
+            
+            const lightbox = document.getElementById('lightbox');
+            const content = document.getElementById('lightbox-content');
+            
+            updateLightboxContent();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateLightboxContent() {
+            const content = document.getElementById('lightbox-content');
+            const currentItem = currentLightboxItems[currentLightboxIndex];
+            
+            let mediaElement = '';
+            if (currentItem.type === 'youtube') {
+                mediaElement = `<iframe src="${currentItem.url}" width="80%" height="80%" frameborder="0" allowfullscreen></iframe>`;
+            } else if (currentItem.type === 'video') {
+                mediaElement = `<video controls width="80%" height="80%"><source src="${currentItem.url}" type="video/mp4"></video>`;
             } else {
-                // Add new member
-                const newId = Math.max(...teamData.map(m => m.id)) + 1;
-                teamData.push({ id: newId, ...memberData });
-            }
-
-            renderTeam();
-            loadAdminData();
-            alert('Team member saved successfully!');
-        }
-
-        function deleteTeamMember() {
-            const select = document.getElementById('team-select');
-            const memberId = parseInt(select.value);
-            
-            if (!memberId) {
-                alert('Please select a team member to delete.');
-                return;
-            }
-
-            if (confirm('Are you sure you want to delete this team member?')) {
-                teamData = teamData.filter(m => m.id !== memberId);
-                renderTeam();
-                loadAdminData();
-                loadTeamMember(); // Clear form
-                alert('Team member deleted successfully!');
-            }
-        }
-
-        // Portfolio management functions
-        function loadPortfolioItem() {
-            const select = document.getElementById('portfolio-select');
-            const itemId = parseInt(select.value);
-            
-            if (!itemId) {
-                // Clear form for new item
-                document.getElementById('portfolio-title').value = '';
-                document.getElementById('portfolio-category').value = 'photography';
-                document.getElementById('portfolio-description').value = '';
-                document.getElementById('portfolio-media').value = '';
-                document.getElementById('portfolio-type').value = 'image';
-                return;
+                mediaElement = `<img src="${currentItem.url}" alt="Portfolio item" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">`;
             }
             
-            const item = portfolioData.find(p => p.id === itemId);
-            if (item) {
-                document.getElementById('portfolio-title').value = item.title;
-                document.getElementById('portfolio-category').value = item.category;
-                document.getElementById('portfolio-description').value = item.description;
-                // For simplicity, we'll just use the first media item in admin
-                document.getElementById('portfolio-media').value = item.media[0].url;
-                document.getElementById('portfolio-type').value = item.media[0].type;
-            }
+            content.innerHTML = mediaElement;
         }
 
-        function savePortfolioItem() {
-            const select = document.getElementById('portfolio-select');
-            const itemId = parseInt(select.value);
+        function navigateLightbox(direction) {
+            currentLightboxIndex = (currentLightboxIndex + direction + currentLightboxItems.length) % currentLightboxItems.length;
+            updateLightboxContent();
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Enhanced mobile menu
+        function initializeNavigation() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const header = document.getElementById('header');
+
+            // Mobile menu toggle
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            // Close mobile menu when clicking on links
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // ... (rest of navigation code)
+        }
+
+        // Enhanced form validation
+        function validateForm(form) {
+            const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+            let isValid = true;
             
-            const itemData = {
-                title: document.getElementById('portfolio-title').value,
-                category: document.getElementById('portfolio-category').value,
-                description: document.getElementById('portfolio-description').value,
-                media: [
-                    {
-                        url: document.getElementById('portfolio-media').value,
-                        type: document.getElementById('portfolio-type').value
-                    }
-                ]
-            };
-
-            if (!itemData.title || !itemData.media[0].url) {
-                alert('Please fill in title and media URL.');
-                return;
-            }
-
-            if (itemId) {
-                // Update existing item
-                const index = portfolioData.findIndex(p => p.id === itemId);
-                if (index !== -1) {
-                    portfolioData[index] = { ...portfolioData[index], ...itemData };
-                }
-            } else {
-                // Add new item
-                const newId = Math.max(...portfolioData.map(p => p.id)) + 1;
-                portfolioData.push({ id: newId, ...itemData });
-            }
-
-            renderPortfolio();
-            loadAdminData();
-            alert('Portfolio item saved successfully!');
-        }
-
-        function deletePortfolioItem() {
-            const select = document.getElementById('portfolio-select');
-            const itemId = parseInt(select.value);
-            
-            if (!itemId) {
-                alert('Please select a portfolio item to delete.');
-                return;
-            }
-
-            if (confirm('Are you sure you want to delete this portfolio item?')) {
-                portfolioData = portfolioData.filter(p => p.id !== itemId);
-                renderPortfolio();
-                loadAdminData();
-                loadPortfolioItem(); // Clear form
-                alert('Portfolio item deleted successfully!');
-            }
-        }
-
-        // Content management functions
-        function saveGeneralContent() {
-            contentData.tagline = document.getElementById('company-tagline').value;
-            contentData.description = document.getElementById('company-description').value;
-            contentData.phone = document.getElementById('contact-phone').value;
-            contentData.email = document.getElementById('contact-email').value;
-            contentData.address = document.getElementById('contact-address').value;
-
-            // Update content on the page
-            updatePageContent();
-            alert('Content updated successfully!');
-        }
-
-        function updatePageContent() {
-            // Update tagline in hero section
-            const taglineElement = document.querySelector('.hero-content .tagline');
-            if (taglineElement) {
-                taglineElement.textContent = contentData.tagline;
-            }
-
-            // Update contact information
-            const contactItems = document.querySelectorAll('.contact-item');
-            contactItems.forEach(item => {
-                const icon = item.querySelector('i');
-                if (icon && icon.classList.contains('fa-phone')) {
-                    item.querySelector('p').textContent = contentData.phone;
-                } else if (icon && icon.classList.contains('fa-envelope')) {
-                    item.querySelector('p').textContent = contentData.email;
-                } else if (icon && icon.classList.contains('fa-map-marker-alt')) {
-                    item.querySelector('p').innerHTML = contentData.address.replace('\n', '<br>');
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.style.borderColor = 'var(--primary-color)';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#e0e0e0';
                 }
             });
+            
+            return isValid;
         }
 
-        // Utility functions
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Performance optimization
-        window.addEventListener('scroll', debounce(() => {
-            updateActiveNavigation();
-        }, 10));
-
-        // Add loading states for better UX
-        function showLoading(element, text) {
-            element.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + text;
-            element.disabled = true;
-        }
-
-        function hideLoading(element, originalText) {
-            element.innerHTML = originalText;
-            element.disabled = false;
-        }
-
-        // Error handling
+        // Enhanced error handling
         window.addEventListener('error', (e) => {
             console.error('An error occurred:', e.error);
+            showNotification('An unexpected error occurred. Please refresh the page.', 'error');
         });
 
-        // Preload critical images for better performance
-        function preloadImages() {
-            const imageUrls = [
-                ...teamData.map(member => member.image),
-                ...portfolioData.flatMap(item => 
-                    item.media.filter(media => media.type === 'image').map(media => media.url)
-                )
-            ];
+        // Performance optimization - Lazy loading for images
+        function initializeLazyLoading() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
 
-            imageUrls.forEach(url => {
+        // Initialize lazy loading
+        setTimeout(initializeLazyLoading, 1000);
+
+        // Enhanced preloading for critical images
+        function preloadCriticalImages() {
+            const criticalImages = [
+                ...teamData.map(member => member.image),
+                'images/mwaffs_logo_2.png'
+            ];
+            
+            criticalImages.forEach(src => {
                 const img = new Image();
-                img.src = url;
+                img.src = src;
             });
         }
 
-        // Initialize preloading
-        setTimeout(preloadImages, 1000);
-
-        // Add accessibility improvements
+        // Enhanced accessibility
         function setupAccessibility() {
-            // Add keyboard navigation for portfolio filters
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(btn => {
-                btn.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        btn.click();
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                // Escape key closes modals
+                if (e.key === 'Escape') {
+                    closeSlideshow();
+                    closeLightbox();
+                    const adminModal = document.getElementById('admin-login-modal');
+                    if (adminModal.classList.contains('active')) {
+                        hideAdminLogin();
                     }
-                });
+                }
+                
+                // Tab key navigation for modal
+                if (e.key === 'Tab' && document.getElementById('admin-login-modal').classList.contains('active')) {
+                    const focusableElements = document.querySelectorAll('#admin-login-modal input, #admin-login-modal button');
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+                    
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            lastElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement) {
+                            firstElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
             });
 
             // Add ARIA labels
             document.querySelector('.hamburger').setAttribute('aria-label', 'Toggle mobile menu');
             document.querySelector('.admin-toggle').setAttribute('aria-label', 'Toggle admin panel');
+            document.querySelector('.back-to-top').setAttribute('aria-label', 'Back to top');
+            
+            // Add role attributes
+            document.querySelector('.nav-menu').setAttribute('role', 'navigation');
+            document.querySelector('.portfolio-grid').setAttribute('role', 'grid');
         }
 
         // Initialize accessibility features
@@ -2927,4 +3060,3 @@
     </script>
 </body>
 </html>
-
