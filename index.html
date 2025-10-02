@@ -1530,10 +1530,10 @@
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="https://facebook.com/mwaffsmedia" target="_blank" title="Facebook">
+                        <a href="https://web.facebook.com/profile.php?id=61564288181126" target="_blank" title="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://youtube.com/mwaffsmedia" target="_blank" title="YouTube">
+                        <a href="https://www.youtube.com/@MWAFFSMEDIA" target="_blank" title="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a href="https://instagram.com/mwaffsmedia" target="_blank" title="Instagram">
@@ -1577,10 +1577,10 @@
                 <div class="footer-section">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="https://facebook.com/mwaffsmedia" target="_blank">
+                        <a href="https://web.facebook.com/profile.php?id=61564288181126" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://youtube.com/mwaffsmedia" target="_blank">
+                        <a href="https://www.youtube.com/@MWAFFSMEDIA" target="_blank">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a href="https://instagram.com/mwaffsmedia" target="_blank">
@@ -1732,8 +1732,7 @@
         let slideshowInterval = null;
         let currentSlideIndex = 0;
         
-        // Extended portfolio data with multiple images per category
-        // FIXED: Corrected the landscape photography images
+        // Updated portfolio data with YouTube videos
         let portfolioData = [
             {
                 id: 1,
@@ -1770,24 +1769,26 @@
             },
             {
                 id: 4,
-                title: "Corporate Video",
+                title: "Mwaffs Media Podcast",
                 category: "videography",
-                description: "Dynamic corporate video showcasing company values",
+                description: "Engaging podcast episodes covering various topics",
                 media: [
-                    { type: "video", url: "https://player.vimeo.com/video/120174177" },
-                    { type: "video", url: "https://player.vimeo.com/video/1084537" },
-                    { type: "video", url: "https://player.vimeo.com/video/139707837" }
+                    { type: "youtube", url: "https://www.youtube.com/embed/nZ5DNJTSoFs" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/oBJB3GHuHaU" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/0gKsLzPffYE" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/Kg3zVcGCq8I" }
                 ]
             },
             {
                 id: 5,
-                title: "Event Coverage",
+                title: "Youth Empowerment Videos",
                 category: "videography",
-                description: "Comprehensive event videography",
+                description: "Inspiring videos focused on youth empowerment and development",
                 media: [
-                    { type: "video", url: "https://player.vimeo.com/video/76979871" },
-                    { type: "video", url: "https://player.vimeo.com/video/148177969" },
-                    { type: "video", url: "https://player.vimeo.com/video/22439234" }
+                    { type: "youtube", url: "https://www.youtube.com/embed/ckvLlCW_688" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/i3OJ3RkgLZE" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/9V1HfbEH1I4" },
+                    { type: "youtube", url: "https://www.youtube.com/embed/_mew7ceMiuU" }
                 ]
             },
             {
@@ -1823,7 +1824,6 @@
         };
 
         // Data Storage
-        // FIXED: Corrected team image paths and added fallback images
         let teamData = [
             {
                 id: 1,
