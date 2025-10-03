@@ -1567,39 +1567,6 @@
             box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
         }
 
-        /* Client Logos Section */
-        .clients {
-            background: white;
-            padding: 60px 0;
-        }
-
-        .client-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .client-logo {
-            opacity: 0.6;
-            transition: all 0.3s ease;
-            filter: grayscale(100%);
-        }
-
-        .client-logo:hover {
-            opacity: 1;
-            filter: grayscale(0%);
-            transform: scale(1.1);
-        }
-
-        .client-logo img {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-        }
-
         @media (max-width: 768px) {
             .testimonial-content {
                 padding: 2rem 1rem;
@@ -1611,14 +1578,6 @@
 
             .admin-buttons {
                 flex-direction: column;
-            }
-
-            .client-logos {
-                gap: 2rem;
-            }
-
-            .client-logo img {
-                height: 40px;
             }
         }
     </style>
@@ -1739,34 +1698,6 @@
         </div>
         <div class="scroll-indicator">
             <i class="fas fa-chevron-down" style="color: white; font-size: 1.5rem;"></i>
-        </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section class="section clients">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Trusted By</h2>
-                <p>We've had the privilege of working with amazing clients across Malawi</p>
-            </div>
-            <div class="client-logos fade-in">
-                <!-- Client logos will be dynamically added -->
-                <div class="client-logo">
-                    <img src="https://via.placeholder.com/150x60/2c3e50/ffffff?text=Client+1" alt="Client 1">
-                </div>
-                <div class="client-logo">
-                    <img src="https://via.placeholder.com/150x60/2c3e50/ffffff?text=Client+2" alt="Client 2">
-                </div>
-                <div class="client-logo">
-                    <img src="https://via.placeholder.com/150x60/2c3e50/ffffff?text=Client+3" alt="Client 3">
-                </div>
-                <div class="client-logo">
-                    <img src="https://via.placeholder.com/150x60/2c3e50/ffffff?text=Client+4" alt="Client 4">
-                </div>
-                <div class="client-logo">
-                    <img src="https://via.placeholder.com/150x60/2c3e50/ffffff?text=Client+5" alt="Client 5">
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1984,17 +1915,6 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="budget">Project Budget</label>
-                            <select id="budget" name="budget">
-                                <option value="">Select Budget Range</option>
-                                <option value="under-50k">Under MWK 50,000</option>
-                                <option value="50k-100k">MWK 50,000 - 100,000</option>
-                                <option value="100k-250k">MWK 100,000 - 250,000</option>
-                                <option value="250k-500k">MWK 250,000 - 500,000</option>
-                                <option value="over-500k">Over MWK 500,000</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="message">Project Details *</label>
                             <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, timeline, and any specific requirements..." required></textarea>
                         </div>
@@ -2108,19 +2028,6 @@
                         <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for updates and insights.</p>
-                    <form id="newsletter-form" style="margin-top: 1rem;">
-                        <div class="form-group">
-                            <input type="email" placeholder="Your email address" required style="margin-bottom: 0.5rem;">
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">
-                                <i class="fas fa-paper-plane"></i>
-                                Subscribe
-                            </button>
-                        </div>
-                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -2380,7 +2287,7 @@
             secretTrigger: "mwaffs"
         };
 
-        // Enhanced Data Storage
+        // Enhanced Data Storage - All 7 Team Members
         let teamData = [
             {
                 id: 1,
@@ -2415,6 +2322,50 @@
                 social: {
                     linkedin: "#",
                     twitter: "#"
+                }
+            },
+            {
+                id: 4,
+                name: "Sarah Chibwana",
+                position: "Lead Photographer",
+                bio: "Award-winning photographer with a keen eye for detail and composition. Specializes in portrait, event, and commercial photography with a distinctive Malawian aesthetic.",
+                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Sarah+Chibwana",
+                social: {
+                    instagram: "#",
+                    facebook: "#"
+                }
+            },
+            {
+                id: 5,
+                name: "Michael Phiri",
+                position: "Senior Videographer",
+                bio: "Creative videographer and editor with expertise in documentary filmmaking and commercial video production. Brings stories to life through compelling visual narratives.",
+                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Michael+Phiri",
+                social: {
+                    youtube: "#",
+                    instagram: "#"
+                }
+            },
+            {
+                id: 6,
+                name: "Grace Kamanga",
+                position: "Graphic Design Lead",
+                bio: "Talented graphic designer with a passion for creating visually stunning brand identities. Combines traditional Malawian motifs with contemporary design principles.",
+                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Grace+Kamanga",
+                social: {
+                    behance: "#",
+                    instagram: "#"
+                }
+            },
+            {
+                id: 7,
+                name: "David Mwale",
+                position: "Social Media Strategist",
+                bio: "Digital marketing expert specializing in social media strategy and content creation. Helps brands build meaningful connections with their audiences across digital platforms.",
+                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=David+Mwale",
+                social: {
+                    twitter: "#",
+                    linkedin: "#"
                 }
             }
         ];
@@ -2456,7 +2407,6 @@
             initializeCounters();
             initializeSlideshow();
             initializeBackToTop();
-            initializeNewsletter();
 
             // Check if already logged in
             checkAdminSession();
@@ -2583,22 +2533,6 @@
             });
         }
 
-        // Newsletter Subscription
-        function initializeNewsletter() {
-            const newsletterForm = document.getElementById('newsletter-form');
-            
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = newsletterForm.querySelector('input[type="email"]').value;
-                
-                // Simulate newsletter subscription
-                setTimeout(() => {
-                    showNotification('Thank you for subscribing to our newsletter!', 'success');
-                    newsletterForm.reset();
-                }, 1000);
-            });
-        }
-
         // Enhanced portfolio initialization
         function initializePortfolio() {
             renderPortfolio();
@@ -2691,6 +2625,8 @@
                             ${member.social.instagram ? `<a href="${member.social.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>` : ''}
                             ${member.social.twitter ? `<a href="${member.social.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>` : ''}
                             ${member.social.linkedin ? `<a href="${member.social.linkedin}" target="_blank"><i class="fab fa-linkedin-in"></i></a>` : ''}
+                            ${member.social.youtube ? `<a href="${member.social.youtube}" target="_blank"><i class="fab fa-youtube"></i></a>` : ''}
+                            ${member.social.behance ? `<a href="${member.social.behance}" target="_blank"><i class="fab fa-behance"></i></a>` : ''}
                         </div>
                     `;
                 }
