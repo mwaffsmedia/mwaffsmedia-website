@@ -1,83 +1,49 @@
-const { createClient } = require('@supabase/supabase-js');
-
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
-);
-
 exports.handler = async (event) => {
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-      body: ''
-    };
-  }
-
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Method not allowed' })
-    };
+    return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
   try {
-    const formData = JSON.parse(event.body);
-    const { name, email, service, message, phone } = formData;
+    const data = JSON.parse(event.body);
     
+    // Validate required fields
+    const { name, email, service, message, phone } = data;
     if (!name || !email || !service || !message) {
       return {
         statusCode: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify({ 
-          error: 'Please fill in all required fields' 
+          success: false, 
+          error: 'Missing required fields' 
         })
       };
     }
 
-    const { data, error } = await supabase
-      .from('contact_submissions')
-      .insert([
-        {
-          name,
-          email,
-          phone: phone || null,
-          service,
-          message,
-          status: 'new'
-        }
-      ]);
-
-    if (error) throw error;
-
+    // Here you can:
+    // 1. Send email (using Nodemailer, SendGrid, etc.)
+    // 2. Save to database (Supabase, MongoDB, etc.)
+    // 3. Send to Slack/Discord
+    // 4. Save to Airtable or Google Sheets
+    
+    console.log('Form submission:', data);
+    
+    // Example: Send email notification
+    // await sendEmail(data);
+    
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        success: true, 
-        message: 'Thank you! Your message has been sent.' 
+      body: JSON.stringify({
+        success: true,
+        message: 'Thank you for your message! We will get back to you within 24 hours.'
       })
     };
-
+    
   } catch (error) {
+    console.error('Form processing error:', error);
     return {
       statusCode: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        error: 'Sorry, there was an error. Please try again.' 
+      body: JSON.stringify({
+        success: false,
+        error: 'Internal server error'
       })
     };
   }
