@@ -1458,12 +1458,7 @@
             <div class="contact-grid fade-in">
                 <div class="contact-form">
                     <h3>Send us a Message</h3>
-                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
-                        <input type="hidden" name="access_key" value="bda6a9f0-aa53-45f8-9226-81b6fc97250f">
-                        <input type="hidden" name="subject" value="New Contact Form Submission - MWAFFS MEDIA">
-                        <input type="hidden" name="from_name" value="MWAFFS MEDIA Website">
-                        <input type="checkbox" name="botcheck" style="display: none;">
-                        
+                    <form id="contact-form">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -2458,7 +2453,7 @@
             testimonials[currentIndex].classList.add('active');
         }
 
-        // Contact form with Web3Forms
+        // Contact form with Netlify Functions
         function initializeContactForm() {
             const form = document.getElementById('contact-form');
             const submitBtn = document.getElementById('submit-btn');
@@ -2468,11 +2463,16 @@
                 e.preventDefault();
                 
                 // Get form data
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData);
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value || '',
+                    service: document.getElementById('service').value,
+                    message: document.getElementById('message').value
+                };
                 
                 // Simple validation
-                if (!data.name || !data.email || !data.message) {
+                if (!formData.name || !formData.email || !formData.service || !formData.message) {
                     showMessage('Please fill in all required fields.', 'error');
                     return;
                 }
@@ -2482,29 +2482,29 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 
                 try {
-                    // Using Web3Forms for form submission
-                    const response = await fetch(form.action, {
+                    // Using our new Netlify function
+                    const response = await fetch('/.netlify/functions/contact/contact', {
                         method: 'POST',
-                        body: formData,
                         headers: {
-                            'Accept': 'application/json'
-                        }
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
                     });
                     
                     const result = await response.json();
                     
                     if (response.ok && result.success) {
                         // Success
-                        showMessage('Thank you for your message! We\'ll get back to you soon.', 'success');
+                        showMessage(result.message, 'success');
                         form.reset();
                     } else {
-                        // Error
-                        throw new Error(result.message || 'Form submission failed');
+                        // Error from our function
+                        throw new Error(result.error || 'Form submission failed');
                     }
                 } catch (error) {
-                    // Error handling
+                    // Network error or other issues
                     console.error('Failed to send message:', error);
-                    showMessage('Sorry, there was an error sending your message. Please try again later or contact us directly at mwaffsmedia@gmail.com.', 'error');
+                    showMessage(error.message || 'Sorry, there was an error sending your message. Please try again later or contact us directly at mwaffsmedia@gmail.com.', 'error');
                 } finally {
                     // Reset button state
                     submitBtn.disabled = false;
@@ -2520,10 +2520,10 @@
             messageDiv.className = `form-message ${type}`;
             messageDiv.style.display = 'block';
             
-            // Hide message after 5 seconds
+            // Hide message after 5 seconds for errors, 10 seconds for success
             setTimeout(() => {
                 messageDiv.style.display = 'none';
-            }, 5000);
+            }, type === 'success' ? 10000 : 5000);
         }
 
         // Admin panel functionality
