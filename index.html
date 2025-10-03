@@ -7,7 +7,7 @@
     <meta name="description" content="MWAFFS MEDIA - Leading Malawian media company specializing in Photography, Videography, and Graphic Design services.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Enhanced CSS with new features */
+        /* All your existing CSS remains the same */
         * {
             margin: 0;
             padding: 0;
@@ -25,8 +25,6 @@
             --malawi-flag-red: #ce1126;
             --malawi-flag-black: #000000;
             --malawi-flag-green: #21b000;
-            --success-color: #27ae60;
-            --warning-color: #f39c12;
         }
 
         body {
@@ -42,7 +40,7 @@
             padding: 0 20px;
         }
 
-        /* Enhanced Header with better animation */
+        /* Header Styles */
         .header {
             position: fixed;
             top: 0;
@@ -51,13 +49,11 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .header.scrolled {
             background: var(--secondary-color);
-            box-shadow: 0 2px 30px rgba(0,0,0,0.15);
-            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
         .nav-container {
@@ -65,11 +61,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
-            transition: padding 0.3s ease;
-        }
-
-        .header.scrolled .nav-container {
-            padding: 0.5rem 0;
         }
 
         .logo {
@@ -80,11 +71,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
         }
 
         .logo i {
@@ -102,7 +88,6 @@
             text-decoration: none;
             transition: color 0.3s ease;
             position: relative;
-            font-weight: 500;
         }
 
         .nav-menu a:hover,
@@ -131,7 +116,6 @@
             flex-direction: column;
             cursor: pointer;
             gap: 4px;
-            padding: 5px;
         }
 
         .hamburger span {
@@ -153,10 +137,10 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
 
-        /* Enhanced Hero Section with Particles */
+        /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(231, 76, 60, 0.7)),
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(231, 76, 60, 0.3)),
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232c3e50" width="1200" height="600"/><circle fill="%23e74c3c" cx="300" cy="150" r="50" opacity="0.3"/><circle fill="%23f39c12" cx="900" cy="400" r="80" opacity="0.2"/><rect fill="%2321b000" x="500" y="200" width="200" height="200" opacity="0.1" rx="20"/></svg>');
             background-size: cover;
             background-position: center;
@@ -167,35 +151,12 @@
             text-align: center;
             color: var(--text-light);
             position: relative;
-            overflow: hidden;
-        }
-
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            animation: float 6s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
         }
 
         .hero-content h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-content .tagline {
@@ -203,14 +164,12 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeInUp 1s ease 0.3s both;
-            font-weight: 300;
         }
 
         .hero-content .subtitle {
             font-size: clamp(1rem, 2vw, 1.3rem);
             margin-bottom: 3rem;
             animation: fadeInUp 1s ease 0.6s both;
-            opacity: 0.8;
         }
 
         .cta-buttons {
@@ -232,23 +191,6 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
         }
 
         .btn-primary {
@@ -259,7 +201,7 @@
         .btn-primary:hover {
             background: #c0392b;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
         }
 
         .btn-outline {
@@ -272,43 +214,11 @@
             background: white;
             color: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255,255,255,0.2);
         }
 
-        .btn-success {
-            background: var(--success-color);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #219653;
-            transform: translateY(-2px);
-        }
-
-        /* Scroll Down Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-5px) translateX(-50%);
-            }
-        }
-
-        /* Enhanced Section Styles */
+        /* Section Styles */
         .section {
-            padding: 100px 0;
+            padding: 80px 0;
             position: relative;
         }
 
@@ -333,7 +243,6 @@
             width: 60px;
             height: 4px;
             background: var(--primary-color);
-            border-radius: 2px;
         }
 
         .section-title p {
@@ -343,21 +252,9 @@
             margin: 0 auto;
         }
 
-        /* Enhanced About Section */
+        /* About Section */
         .about {
             background: var(--bg-light);
-            position: relative;
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.02"><circle cx="50" cy="50" r="2" fill="%232c3e50"/></svg>');
-            background-size: 50px 50px;
         }
 
         .about-grid {
@@ -391,26 +288,13 @@
             text-align: center;
             padding: 2rem;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--primary-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
         .stat-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
         }
 
         .stat-item .number {
@@ -424,10 +308,9 @@
             font-size: 1rem;
             opacity: 0.8;
             margin-top: 0.5rem;
-            font-weight: 500;
         }
 
-        /* Enhanced Services Section */
+        /* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -437,13 +320,12 @@
 
         .service-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            text-align: center;
         }
 
         .service-card::before {
@@ -453,38 +335,31 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            background: var(--primary-color);
         }
 
         .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .service-card i {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover i {
-            transform: scale(1.1);
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--secondary-color);
         }
 
         .service-card p {
             opacity: 0.8;
             line-height: 1.6;
-            font-size: 1rem;
         }
 
-        /* Enhanced Portfolio Section */
+        /* Portfolio Section - NEW: Moved before Team */
         .portfolio-filters {
             display: flex;
             justify-content: center;
@@ -494,49 +369,45 @@
         }
 
         .filter-btn {
-            padding: 12px 24px;
+            padding: 10px 20px;
             border: 2px solid var(--primary-color);
             background: transparent;
             color: var(--primary-color);
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 500;
         }
 
         .filter-btn.active,
         .filter-btn:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .portfolio-item {
             position: relative;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
             background: white;
-            cursor: pointer;
         }
 
         .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .portfolio-item .item-image {
             width: 100%;
-            height: 280px;
+            height: 250px;
             background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
             position: relative;
             overflow: hidden;
@@ -546,11 +417,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover .item-image img {
-            transform: scale(1.1);
         }
 
         .portfolio-item .item-overlay {
@@ -559,12 +425,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(44, 62, 80, 0.9));
+            background: rgba(44, 62, 80, 0.9);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
         .portfolio-item:hover .item-overlay {
@@ -577,33 +443,22 @@
 
         .portfolio-item h3 {
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-            color: var(--secondary-color);
         }
 
         .portfolio-item .category {
             color: var(--primary-color);
             font-size: 0.9rem;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .portfolio-item .description {
-            margin-top: 0.5rem;
-            opacity: 0.8;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Enhanced Category Slideshow */
+        /* NEW: Category Slideshow Styles */
         .category-slideshow {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.9);
             z-index: 2000;
             display: none;
             align-items: center;
@@ -617,13 +472,12 @@
 
         .slideshow-container {
             position: relative;
-            width: 95%;
-            max-width: 1200px;
-            height: 80vh;
+            width: 90%;
+            max-width: 1000px;
+            height: 70vh;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .slideshow-slide {
@@ -637,7 +491,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
         }
 
         .slideshow-slide.active {
@@ -649,21 +502,19 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            border-radius: 10px;
         }
 
         .slideshow-controls {
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
-            align-items: center;
         }
 
         .slideshow-close {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.5);
             color: white;
             border: none;
             width: 50px;
@@ -675,32 +526,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .slideshow-close:hover {
-            background: var(--primary-color);
-            transform: scale(1.1);
         }
 
         .slideshow-nav {
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.5);
             color: white;
             border: none;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .slideshow-nav:hover {
-            background: var(--primary-color);
-            transform: scale(1.1);
         }
 
         .slideshow-dots {
@@ -715,55 +554,42 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.5);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease;
         }
 
         .slideshow-dot.active {
             background: var(--primary-color);
-            transform: scale(1.2);
         }
 
-        .slideshow-info {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            color: white;
-            background: rgba(0,0,0,0.7);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-        }
-
-        /* Enhanced Team Section */
+        /* Team Section - NEW: Moved after Portfolio */
         .team {
             background: var(--bg-light);
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .team-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
             position: relative;
-            text-align: center;
         }
 
         .team-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .team-card .card-image {
             width: 100%;
-            height: 320px;
+            height: 300px;
             background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
             position: relative;
             overflow: hidden;
@@ -773,7 +599,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease;
         }
 
         .team-card:hover .card-image img {
@@ -781,58 +607,29 @@
         }
 
         .team-card .card-content {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .team-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--secondary-color);
         }
 
         .team-card .position {
             color: var(--primary-color);
             font-weight: bold;
             margin-bottom: 1rem;
-            font-size: 1rem;
         }
 
         .team-card .bio {
             opacity: 0.8;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
         }
 
-        .team-social {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .team-social a {
-            width: 40px;
-            height: 40px;
-            background: var(--bg-light);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .team-social a:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Enhanced Contact Section */
+        /* Contact Section */
         .contact {
             background: var(--bg-light);
-            position: relative;
         }
 
         .contact-grid {
@@ -844,33 +641,30 @@
 
         .contact-form {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .form-group {
             margin-bottom: 1.5rem;
-            position: relative;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
-            color: var(--secondary-color);
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
             font-family: inherit;
-            font-size: 1rem;
         }
 
         .form-group input:focus,
@@ -878,36 +672,25 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
         }
 
         .contact-info h3 {
             font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
         }
 
         .contact-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 1rem;
             margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
         }
 
         .contact-item i {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--primary-color);
-            width: 30px;
-            margin-top: 5px;
+            width: 20px;
         }
 
         .social-links {
@@ -927,121 +710,242 @@
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .social-links a:hover::before {
-            left: 100%;
         }
 
         .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
         }
 
-        /* Enhanced Footer */
+        /* Footer */
         .footer {
             background: var(--secondary-color);
             color: var(--text-light);
-            padding: 4rem 0 1rem;
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            padding: 3rem 0 1rem;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
         .footer-section h3 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
-            font-size: 1.3rem;
-        }
-
-        .footer-section p {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
         }
 
         .footer-section a {
             color: var(--text-light);
             text-decoration: none;
             transition: color 0.3s ease;
-            opacity: 0.8;
         }
 
         .footer-section a:hover {
             color: var(--primary-color);
-            opacity: 1;
         }
 
         .footer-bottom {
             border-top: 1px solid #495057;
-            padding-top: 2rem;
+            padding-top: 1rem;
             text-align: center;
-            opacity: 0.7;
         }
 
-        /* Back to Top Button */
-        .back-to-top {
+        /* Admin Panel */
+        .admin-panel {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 2000;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            padding: 2rem;
+        }
+
+        .admin-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
             background: var(--primary-color);
             color: white;
             border: none;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 1000;
-            display: none;
+            z-index: 2001;
+            transition: all 0.3s ease;
+            display: none; /* Hidden by default */
+        }
+
+        .admin-toggle.visible {
+            display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
 
-        .back-to-top:hover {
+        .admin-toggle:hover {
             background: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+            transform: scale(1.1);
         }
 
-        .back-to-top.visible {
+        .admin-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .admin-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Admin Login Modal */
+        .admin-login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-login-modal.active {
             display: flex;
+        }
+
+        .login-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .login-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .login-form .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .login-message {
+            margin-top: 1rem;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .login-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .secret-login-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 10px;
+            height: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 2002;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--secondary-color);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .admin-panel {
+                width: 100vw;
+                right: -100vw;
+            }
+
+            .slideshow-container {
+                height: 50vh;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Loading Animation */
@@ -1070,10 +974,10 @@
         }
 
         .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid #34495e;
-            border-top: 4px solid var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border: 3px solid #34495e;
+            border-top: 3px solid var(--primary-color);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 1rem;
@@ -1084,7 +988,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Enhanced Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -1093,23 +996,16 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.95);
+            background-color: rgba(0,0,0,0.9);
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-        }
-
-        .lightbox.active {
-            display: flex;
         }
 
         .lightbox img,
         .lightbox video {
             max-width: 90%;
-            max-height: 80%;
+            max-height: 90%;
             object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
 
         .lightbox-close {
@@ -1117,291 +1013,30 @@
             top: 20px;
             right: 30px;
             color: white;
-            font-size: 2.5rem;
+            font-size: 2rem;
             cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .lightbox-close:hover {
-            color: var(--primary-color);
-        }
-
-        .lightbox-nav {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .lightbox-nav button {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-nav button:hover {
-            background: var(--primary-color);
-            transform: scale(1.1);
-        }
-
-        /* Notification System */
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 30px;
-            padding: 15px 25px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 4000;
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            border-left: 4px solid var(--success-color);
-        }
-
-        .notification.active {
-            transform: translateX(0);
-        }
-
-        .notification.error {
-            border-left-color: var(--primary-color);
-        }
-
-        .notification.warning {
-            border-left-color: var(--warning-color);
-        }
-
-        /* Enhanced portfolio grid for photography */
-        .portfolio-item .item-image img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover .item-image img {
-            transform: scale(1.1);
-        }
-
-        /* Loading states for images */
-        .portfolio-item .item-image {
-            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-item .item-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .portfolio-item .item-image.loaded::before {
-            display: none;
-        }
-
-        /* Mobile Responsive Design */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--secondary-color);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 3rem;
-                transition: left 0.3s ease;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-menu li {
-                margin: 1.5rem 0;
-            }
-
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .admin-panel {
-                width: 100vw;
-                right: -100vw;
-            }
-
-            .slideshow-container {
-                height: 50vh;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Pulse Animation for CTA */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        /* Enhanced Admin Panel */
-        .admin-panel {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
-            z-index: 2000;
-            overflow-y: auto;
-            transition: right 0.3s ease;
-            padding: 2rem;
-        }
-
-        .admin-panel.active {
-            right: 0;
-        }
-
-        .admin-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 2001;
-            transition: all 0.3s ease;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
-        }
-
-        .admin-toggle.visible {
-            display: flex;
-        }
-
-        .admin-toggle:hover {
-            background: #c0392b;
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
-        }
-
-        .admin-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            background: #f8f9fa;
-        }
-
-        .admin-section h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            font-size: 1.2rem;
         }
 
         /* Form Message Styles */
         .form-message {
-            padding: 15px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 8px;
             margin-top: 15px;
             text-align: center;
             display: none;
             font-weight: bold;
-            border-left: 4px solid;
         }
 
         .form-message.success {
             background-color: #d4edda;
             color: #155724;
-            border-color: #c3e6cb;
+            border: 1px solid #c3e6cb;
         }
 
         .form-message.error {
             background-color: #f8d7da;
             color: #721c24;
-            border-color: #f5c6cb;
+            border: 1px solid #f5c6cb;
         }
 
         .loading {
@@ -1409,10 +1044,9 @@
             pointer-events: none;
         }
 
-        /* Enhanced Testimonials */
         .testimonials-carousel {
             position: relative;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -1432,20 +1066,19 @@
         .testimonial-content {
             background: white;
             padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
         }
 
         .testimonial-content::before {
             content: '"';
-            font-size: 5rem;
+            font-size: 4rem;
             color: var(--primary-color);
             position: absolute;
-            top: -20px;
+            top: -10px;
             left: 20px;
             font-family: serif;
-            opacity: 0.3;
         }
 
         .testimonial-content p {
@@ -1453,22 +1086,6 @@
             font-style: italic;
             margin-bottom: 2rem;
             line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .testimonial-author img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-color);
         }
 
         .testimonial-author h4 {
@@ -1521,7 +1138,6 @@
         .admin-header h2 {
             color: var(--primary-color);
             margin: 0;
-            font-size: 1.5rem;
         }
 
         .close-admin {
@@ -1558,13 +1174,11 @@
             border-radius: 8px;
             transition: border-color 0.3s ease;
             background: white;
-            font-size: 1rem;
         }
 
         .form-group select:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
         }
 
         @media (max-width: 768px) {
@@ -1592,15 +1206,7 @@
         </div>
     </div>
 
-    <!-- Notification System -->
-    <div class="notification" id="notification"></div>
-
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="back-to-top" title="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- Category Slideshow -->
+    <!-- NEW: Category Slideshow -->
     <div class="category-slideshow" id="category-slideshow">
         <button class="slideshow-close" id="slideshow-close">
             <i class="fas fa-times"></i>
@@ -1608,24 +1214,23 @@
         <div class="slideshow-container" id="slideshow-container">
             <!-- Slides will be dynamically added here -->
         </div>
-        <div class="slideshow-info" id="slideshow-info"></div>
         <div class="slideshow-controls">
             <button class="slideshow-nav" id="slideshow-prev">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <div class="slideshow-dots" id="slideshow-dots">
-                <!-- Dots will be dynamically added here -->
-            </div>
             <button class="slideshow-nav" id="slideshow-next">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
+        <div class="slideshow-dots" id="slideshow-dots">
+            <!-- Dots will be dynamically added here -->
+        </div>
     </div>
 
     <!-- Admin Login Modal -->
-    <div class="admin-login-modal" id="admin-login-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center;">
-        <div class="login-form" style="background: white; padding: 2rem; border-radius: 15px; max-width: 400px; width: 90%;">
-            <h2 style="margin-bottom: 1.5rem; text-align: center;">Admin Login</h2>
+    <div class="admin-login-modal" id="admin-login-modal">
+        <div class="login-form">
+            <h2>Admin Login</h2>
             <form id="admin-login-form">
                 <div class="form-group">
                     <label for="admin-username">Username</label>
@@ -1635,24 +1240,24 @@
                     <label for="admin-password">Password</label>
                     <input type="password" id="admin-password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <button type="submit" class="btn btn-primary">
                     <i class="fas fa-sign-in-alt"></i>
                     Login
                 </button>
-                <div class="login-message" id="login-message" style="margin-top: 1rem; text-align: center;"></div>
+                <div class="login-message" id="login-message"></div>
             </form>
         </div>
     </div>
 
     <!-- Secret Login Trigger (Hidden from normal users) -->
-    <button class="secret-login-trigger" id="secret-login-trigger" title="Admin Access" style="position: fixed; bottom: 10px; left: 10px; width: 10px; height: 10px; background: transparent; border: none; cursor: pointer; z-index: 1000;"></button>
+    <button class="secret-login-trigger" id="secret-login-trigger" title="Admin Access"></button>
 
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
             <nav class="nav-container">
                 <a href="#home" class="logo">
-                    <div style="width: 60px; height: 60px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">MM</div>
+                    <img src="images/mwaffs logo 2.png" alt="jud.png" style="width:60px; height:auto;">
                     MWAFFS MEDIA
                 </a>
                 <ul class="nav-menu" id="nav-menu">
@@ -1661,7 +1266,6 @@
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                     <li><a href="#team" class="nav-link">Team</a></li>
-                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger">
@@ -1680,13 +1284,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="particles" id="particles"></div>
         <div class="hero-content">
             <h1>MWAFFS MEDIA</h1>
             <p class="tagline">Capturing Malawi's Stories Through Creative Excellence</p>
-            <p class="subtitle">Professional Photography • Videography • Graphic Design • Brand Strategy</p>
+            <p class="subtitle">Professional Photography • Videography • Graphic Design</p>
             <div class="cta-buttons">
-                <a href="#portfolio" class="btn btn-primary pulse">
+                <a href="#portfolio" class="btn btn-primary">
                     <i class="fas fa-play"></i>
                     View Our Work
                 </a>
@@ -1695,9 +1298,6 @@
                     Get In Touch
                 </a>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down" style="color: white; font-size: 1.5rem;"></i>
         </div>
     </section>
 
@@ -1714,12 +1314,6 @@
                     <p>MWAFFS MEDIA stands at the forefront of Malawi's creative industry, delivering exceptional photography, videography, and graphic design services. Founded with a vision to tell Malawi's stories through powerful visual narratives, we combine technical expertise with artistic creativity.</p>
                     <p>Our team of passionate professionals brings together years of experience, cutting-edge equipment, and an deep understanding of Malawian culture to create content that resonates both locally and internationally.</p>
                     <p>From corporate events to weddings, from brand campaigns to documentaries, we approach each project with dedication, creativity, and the highest standards of professionalism.</p>
-                    <div class="cta-buttons" style="justify-content: flex-start; margin-top: 2rem;">
-                        <a href="#contact" class="btn btn-primary">
-                            <i class="fas fa-calendar"></i>
-                            Book a Consultation
-                        </a>
-                    </div>
                 </div>
                 <div class="stats-container">
                     <div class="stat-item">
@@ -1771,21 +1365,11 @@
                     <h3>Brand Consultation</h3>
                     <p>Strategic brand development and consultation services to help businesses establish strong visual identities and effective marketing strategies in the Malawian market.</p>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Social Media Management</h3>
-                    <p>Complete social media strategy, content creation, and management services to grow your online presence and engage your audience effectively.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Creative Strategy</h3>
-                    <p>Innovative creative direction and strategic planning to ensure your brand message is communicated effectively across all media platforms.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio Section - CHANGED: Moved before Team -->
     <section class="section portfolio" id="portfolio">
         <div class="container">
             <div class="section-title fade-in">
@@ -1797,7 +1381,6 @@
                 <button class="filter-btn" data-filter="photography">Photography</button>
                 <button class="filter-btn" data-filter="videography">Videography</button>
                 <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
             </div>
             <div class="portfolio-grid fade-in" id="portfolio-grid">
                 <!-- Portfolio items will be populated by JavaScript -->
@@ -1805,7 +1388,7 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team Section - CHANGED: Moved after Portfolio -->
     <section class="section team" id="team">
         <div class="container">
             <div class="section-title fade-in">
@@ -1819,7 +1402,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section testimonials" id="testimonials" style="background: var(--bg-light);">
+    <section class="section testimonials" style="background: var(--bg-light);">
         <div class="container">
             <div class="section-title fade-in">
                 <h2>What Our Clients Say</h2>
@@ -1828,37 +1411,28 @@
             <div class="testimonials-carousel fade-in" id="testimonials-carousel">
                 <div class="testimonial-item active">
                     <div class="testimonial-content">
-                        <p>"MWAFFS MEDIA captured our wedding beautifully. Their attention to detail and professionalism exceeded our expectations. The photos and videos are absolutely stunning and we'll cherish them forever!"</p>
+                        <p>"MWAFFS MEDIA captured our wedding beautifully. Their attention to detail and professionalism exceeded our expectations. The photos and videos are absolutely stunning!"</p>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Sarah & John">
-                            <div>
-                                <h4>Sarah & John Banda</h4>
-                                <span>Wedding Clients</span>
-                            </div>
+                            <h4>Sarah & John Banda</h4>
+                            <span>Wedding Clients</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-content">
-                        <p>"Working with MWAFFS MEDIA on our corporate campaign was a game-changer. Their creative approach and technical expertise delivered results beyond our imagination. Highly recommended!"</p>
+                        <p>"Working with MWAFFS MEDIA on our corporate campaign was a game-changer. Their creative approach and technical expertise delivered results beyond our imagination."</p>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Grace Mthunzi">
-                            <div>
-                                <h4>Grace Mthunzi</h4>
-                                <span>Marketing Director, ABC Corp</span>
-                            </div>
+                            <h4>Grace Mthunzi</h4>
+                            <span>Marketing Director, ABC Corp</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-content">
-                        <p>"The team's passion for storytelling through visuals is evident in every project. They understand Malawian culture and translate it beautifully into their work. Truly exceptional!"</p>
+                        <p>"The team's passion for storytelling through visuals is evident in every project. They understand Malawian culture and translate it beautifully into their work."</p>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Dr. Patrick Chirwa">
-                            <div>
-                                <h4>Dr. Patrick Chirwa</h4>
-                                <span>Cultural Ambassador</span>
-                            </div>
+                            <h4>Dr. Patrick Chirwa</h4>
+                            <span>Cultural Ambassador</span>
                         </div>
                     </div>
                 </div>
@@ -1884,7 +1458,7 @@
             <div class="contact-grid fade-in">
                 <div class="contact-form">
                     <h3>Send us a Message</h3>
-                    <form id="contact-form">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
                         <input type="hidden" name="access_key" value="bda6a9f0-aa53-45f8-9226-81b6fc97250f">
                         <input type="hidden" name="subject" value="New Contact Form Submission - MWAFFS MEDIA">
                         <input type="hidden" name="from_name" value="MWAFFS MEDIA Website">
@@ -1910,13 +1484,12 @@
                                 <option value="videography">Videography</option>
                                 <option value="graphic-design">Graphic Design</option>
                                 <option value="consultation">Brand Consultation</option>
-                                <option value="social-media">Social Media Management</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message">Project Details *</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, timeline, and any specific requirements..." required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" id="submit-btn">
@@ -1956,18 +1529,11 @@
                             <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-globe-africa"></i>
-                        <div>
-                            <strong>Service Areas</strong>
-                            <p>Blantyre • Lilongwe • Mzuzu • Zomba • Nationwide</p>
-                        </div>
-                    </div>
                     <div class="social-links">
-                        <a href="https://web.facebook.com/profile.php?id=61564288181126" target="_blank" title="Facebook">
+                        <a href="https://facebook.com/mwaffsmedia" target="_blank" title="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.youtube.com/@MWAFFSMEDIA" target="_blank" title="YouTube">
+                        <a href="https://youtube.com/mwaffsmedia" target="_blank" title="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a href="https://instagram.com/mwaffsmedia" target="_blank" title="Instagram">
@@ -1975,9 +1541,6 @@
                         </a>
                         <a href="https://twitter.com/mwaffsmedia" target="_blank" title="Twitter">
                             <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://linkedin.com/company/mwaffsmedia" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
@@ -1992,11 +1555,32 @@
                 <div class="footer-section">
                     <h3>MWAFFS MEDIA</h3>
                     <p>Premier media company in Malawi, specializing in photography, videography, and graphic design services that capture and tell your story with excellence.</p>
-                    <div class="social-links" style="margin-top: 1.5rem;">
-                        <a href="https://web.facebook.com/profile.php?id=61564288181126" target="_blank">
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#services">Photography</a></li>
+                        <li><a href="#services">Videography</a></li>
+                        <li><a href="#services">Graphic Design</a></li>
+                        <li><a href="#services">Brand Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://facebook.com/mwaffsmedia" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.youtube.com/@MWAFFSMEDIA" target="_blank">
+                        <a href="https://youtube.com/mwaffsmedia" target="_blank">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a href="https://instagram.com/mwaffsmedia" target="_blank">
@@ -2006,28 +1590,6 @@
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#services">Photography</a></li>
-                        <li><a href="#services">Videography</a></li>
-                        <li><a href="#services">Graphic Design</a></li>
-                        <li><a href="#services">Brand Consultation</a></li>
-                        <li><a href="#services">Social Media Management</a></li>
-                        <li><a href="#services">Creative Strategy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -2098,7 +1660,6 @@
                         <option value="photography">Photography</option>
                         <option value="videography">Videography</option>
                         <option value="graphic-design">Graphic Design</option>
-                        <option value="branding">Branding</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -2150,25 +1711,6 @@
             <button onclick="saveGeneralContent()" class="btn btn-primary">Save Changes</button>
         </div>
 
-        <!-- Analytics Section -->
-        <div class="admin-section">
-            <h3>Website Analytics</h3>
-            <div class="stats-container" style="grid-template-columns: 1fr 1fr;">
-                <div class="stat-item">
-                    <span class="number" id="total-visits">0</span>
-                    <span class="label">Total Visits</span>
-                </div>
-                <div class="stat-item">
-                    <span class="number" id="form-submissions">0</span>
-                    <span class="label">Form Submissions</span>
-                </div>
-            </div>
-            <button onclick="resetAnalytics()" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">
-                <i class="fas fa-sync-alt"></i>
-                Reset Analytics
-            </button>
-        </div>
-
         <!-- Logout Button -->
         <div class="admin-section">
             <button onclick="logoutAdmin()" class="btn btn-outline" style="width: 100%;">
@@ -2179,224 +1721,178 @@
     </div>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
         <div class="lightbox-content" id="lightbox-content"></div>
-        <div class="lightbox-nav">
-            <button onclick="navigateLightbox(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button onclick="navigateLightbox(1)">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
     </div>
 
     <script>
-        // Enhanced JavaScript with all missing functions implemented
-
-        // Category slideshow functionality
+        // NEW: Category slideshow functionality
         let currentSlideshow = null;
         let slideshowInterval = null;
         let currentSlideIndex = 0;
         
-        // Photography images array - Updated with better filenames
-        const photographyImageFilenames = [
-            'MwaffsMedia.jpg',
-            'MwaffsMedia1.jpg',
-            'MwaffsMedia2.jpg',
-            'MwaffsMedia3.jpg',
-            'MwaffsMedia4.jpg'
-        ];
-
-        // Enhanced portfolio data with grouped photography
+        // FIXED: Corrected portfolio data with proper syntax for landscape photography
         let portfolioData = [
             {
                 id: 1,
-                title: "Photography Portfolio",
-                category: "photography",
-                description: "Our complete collection of professional photography work",
-                media: photographyImageFilenames.map(filename => ({
-                    type: "image",
-                    url: `https://via.placeholder.com/800x600/2c3e50/ffffff?text=MWAFFS+MEDIA+${photographyImageFilenames.indexOf(filename) + 1}`,
-                    title: `Photography ${photographyImageFilenames.indexOf(filename) + 1}`
-                }))
-            },
-            {
-                id: 2,
                 title: "Wedding Photography",
                 category: "photography",
                 description: "Beautiful wedding photography capturing love and tradition",
                 media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop", title: "Wedding Couple" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=800&h=600&fit=crop", title: "Ceremony" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=600&fit=crop", title: "Reception" }
+                    { type: "image", url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=500&h=400&fit=crop" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=500&h=400&fit=crop" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&h=400&fit=crop" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Portrait Photography",
+                category: "photography",
+                description: "Professional portrait sessions",
+                media: [
+                    { type: "image", url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&h=400&fit=crop" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=500&h=400&fit=crop" }
                 ]
             },
             {
                 id: 3,
-                title: "Corporate Branding",
-                category: "branding",
-                description: "Complete brand identity packages for businesses",
+                title: "Landscape Photography",
+                category: "photography",
+                description: "Stunning Malawian landscapes",
                 media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1558655146-364adaf3f518?w=800&h=600&fit=crop", title: "Brand Guide" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1601933470096-0e34634ffcde?w=800&h=600&fit=crop", title: "Logo Design" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1565689228866-1d5b1300d3c8?w=800&h=600&fit=crop", title: "Marketing Materials" }
+                    { type: "image", url: "Photography/Mwaffs Media .jpg" },
+                    { type: "image", url: "Photography/Mwaffs Media 1.jpg" },
+                    { type: "image", url: "Photography/Mwaffs Media 2.jpg" },
+                    { type: "image", url: "Photography/Mwaffs Media 3.jpg" },
+                    { type: "image", url: "Photography/Mwaffs Media 4.jpg" }
                 ]
             },
             {
                 id: 4,
-                title: "Mwaffs Media Podcast",
+                title: "Corporate Video",
                 category: "videography",
-                description: "Engaging podcast episodes covering various topics",
+                description: "Dynamic corporate video showcasing company values",
                 media: [
-                    { type: "youtube", url: "https://www.youtube.com/embed/nZ5DNJTSoFs", title: "Episode 1" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/oBJB3GHuHaU", title: "Episode 2" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/0gKsLzPffYE", title: "Episode 3" }
+                    { type: "video", url: "https://player.vimeo.com/video/120174177" },
+                    { type: "video", url: "https://player.vimeo.com/video/1084537" },
+                    { type: "video", url: "https://player.vimeo.com/video/139707837" }
                 ]
             },
             {
                 id: 5,
-                title: "Youth Empowerment Videos",
+                title: "Event Coverage",
                 category: "videography",
-                description: "Inspiring videos focused on youth empowerment and development",
+                description: "Comprehensive event videography",
                 media: [
-                    { type: "youtube", url: "https://www.youtube.com/embed/ckvLlCW_688", title: "Youth Program" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/i3OJ3RkgLZE", title: "Education Initiative" },
-                    { type: "youtube", url: "https://www.youtube.com/embed/9V1HfbEH1I4", title: "Community Project" }
+                    { type: "video", url: "https://player.vimeo.com/video/76979871" },
+                    { type: "video", url: "https://player.vimeo.com/video/148177969" },
+                    { type: "video", url: "https://player.vimeo.com/video/22439234" }
                 ]
             },
             {
                 id: 6,
-                title: "Graphic Design Portfolio",
+                title: "Logo Design",
                 category: "graphic-design",
-                description: "Creative designs for various Malawian businesses",
+                description: "Creative logo designs for various Malawian businesses",
                 media: [
-                    { type: "image", url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop", title: "Logo Design" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop", title: "Brand Identity" },
-                    { type: "image", url: "https://images.unsplash.com/photo-1634942536946-13583e5c04f0?w=800&h=600&fit=crop", title: "Marketing Materials" }
+                    { type: "image", url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=400&fit=crop" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=500&h=400&fit=crop" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1634942536946-13583e5c04f0?w=500&h=400&fit=crop" }
+                ]
+            },
+            {
+                id: 7,
+                title: "Brand Identity",
+                category: "graphic-design",
+                description: "Complete brand identity packages",
+                media: [
+                    { type: "image", url: "https://images.unsplash.com/photo-1558655146-364adaf3f518?w=500&h=400&fit=crop" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1601933470096-0e34634ffcde?w=500&h=400&fit=crop" },
+                    { type: "image", url: "https://images.unsplash.com/photo-1565689228866-1d5b1300d3c8?w=500&h=400&fit=crop" }
                 ]
             }
         ];
 
+        // Rest of your existing data and functions remain the same
         // Admin Security Configuration
         const ADMIN_CONFIG = {
-            username: "mwaffsadmin",
-            password: "MalawiMedia2024!",
-            sessionTimeout: 60 * 60 * 1000,
-            secretTrigger: "mwaffs"
+            username: "mwaffsadmin", // Change this to your preferred username
+            password: "MalawiMedia2024!", // Change this to your preferred password
+            sessionTimeout: 60 * 60 * 1000, // 1 hour in milliseconds
+            secretTrigger: "mwaffs" // Secret keyword to trigger login
         };
 
-        // Enhanced Data Storage - All 7 Team Members
+        // Data Storage
         let teamData = [
             {
                 id: 1,
                 name: "Precious Mataka",
-                position: "CEO & Creative Director",
+                position: "CEO",
                 bio: "As a Co-Founder of MWAFFS Media, Precious Mataka leads with creativity, vision, and innovation. He is a dynamic leader with a passion for developing fresh ideas, guiding teams toward success, and delivering impactful media solutions that inspire and connect communities.",
-                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Precious+Mataka",
-                social: {
-                    facebook: "#",
-                    instagram: "#",
-                    linkedin: "#"
-                }
+                image: "images/Precious Mataka CEO.png"
             },
             {
                 id: 2,
                 name: "Praise Bwanali",
-                position: "CEO & Technical Director",
-                bio: "Creative director and co-founder with extensive experience in photography and videography. Committed to capturing authentic Malawian stories with technical excellence and artistic vision.",
-                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Praise+Bwanali",
-                social: {
-                    facebook: "#",
-                    instagram: "#",
-                    twitter: "#"
-                }
+                position: "CEO",
+                bio: "Creative director and co-founder with extensive experience in photography and videography. Committed to capturing authentic Malawian stories.",
+                image: "images/Praise Bwanali.jpg"
             },
             {
                 id: 3,
                 name: "Grant Mliule",
                 position: "Managing Director",
-                bio: "Strategic leader overseeing company operations and business development. Expert in project management and client relationships with a focus on delivering exceptional value.",
-                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Grant+Mliule",
-                social: {
-                    linkedin: "#",
-                    twitter: "#"
-                }
+                bio: "Strategic leader overseeing company operations and business development. Expert in project management and client relationships.",
+                image: "images/Grant Mliule.jpg"
             },
             {
                 id: 4,
-                name: "Sarah Chibwana",
-                position: "Lead Photographer",
-                bio: "Award-winning photographer with a keen eye for detail and composition. Specializes in portrait, event, and commercial photography with a distinctive Malawian aesthetic.",
-                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Sarah+Chibwana",
-                social: {
-                    instagram: "#",
-                    facebook: "#"
-                }
+                name: "Fatsani Munkhondya",
+                position: "Secretary",
+                bio: "As Secretary of MWAFFS Media, [Name] ensures effective communication, organization, and record-keeping within the team. With strong attention to detail and commitment to efficiency, [he/she] plays a vital role in supporting leadership and keeping operations running smoothly.",
+                image: "images/mwaffs.png"
             },
             {
                 id: 5,
-                name: "Michael Phiri",
-                position: "Senior Videographer",
-                bio: "Creative videographer and editor with expertise in documentary filmmaking and commercial video production. Brings stories to life through compelling visual narratives.",
-                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Michael+Phiri",
-                social: {
-                    youtube: "#",
-                    instagram: "#"
-                }
+                name: "Charles Luwe",
+                position: "Marketing Director",
+                bio: "Charles Luwe, the Marketing Director of MWAFFS Media, leads with creativity and strategy in promoting the company's brand and services. With a passion for innovation and audience engagement, [he/she] develops impactful campaigns that connect MWAFFS Media to clients and communities.",
+                image: "images/mwaffs.png"
             },
             {
                 id: 6,
-                name: "Grace Kamanga",
-                position: "Graphic Design Lead",
-                bio: "Talented graphic designer with a passion for creating visually stunning brand identities. Combines traditional Malawian motifs with contemporary design principles.",
-                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=Grace+Kamanga",
-                social: {
-                    behance: "#",
-                    instagram: "#"
-                }
+                name: "Alexander Makuluni",
+                position: "Deputy Marketing Director",
+                bio: "As the Deputy Marketing Director, Alexander Makuluni supports the marketing team with fresh ideas and creative initiatives. Dedicated to growth and visibility, he works closely with the Marketing Director to expand MWAFFS Media's reach and strengthen its brand presence.",
+                image: "images/mwaffs.png"
             },
             {
                 id: 7,
-                name: "David Mwale",
-                position: "Social Media Strategist",
-                bio: "Digital marketing expert specializing in social media strategy and content creation. Helps brands build meaningful connections with their audiences across digital platforms.",
-                image: "https://via.placeholder.com/300x300/2c3e50/ffffff?text=David+Mwale",
-                social: {
-                    twitter: "#",
-                    linkedin: "#"
-                }
+                name: "Watson S. Banda ",
+                position: "Chief Whipper",
+                bio: "As Chief Whipper, Watson S. Banda energizes and motivates the MWAFFS Media team, fostering unity and collaboration across projects. Known for discipline and team coordination, [he/she] ensures that goals are met on time and that every member contributes to the company's success.",
+                image: "images/Watson Silvestar Banda.jpeg"
             }
         ];
 
         let contentData = {
             tagline: "Capturing Malawi's Stories Through Creative Excellence",
             description: "MWAFFS MEDIA stands at the forefront of Malawi's creative industry, delivering exceptional photography, videography, and graphic design services.",
-            phone: "+265 888 251 157",
-            email: "mwaffsmedia@gmail.com",
+            phone: "+265 123 456 789",
+            email: "info@mwaffsmedia.com",
             address: "Blantyre, Southern Region\nMalawi"
-        };
-
-        // Analytics Data
-        let analyticsData = {
-            totalVisits: 0,
-            formSubmissions: 0,
-            lastVisit: null
         };
 
         // Initialize the website
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize analytics
-            initializeAnalytics();
-
             // Hide loader after 2 seconds
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
             }, 2000);
 
             // Initialize all components
-            initializeParticles();
             initializeNavigation();
             initializeAnimations();
             initializePortfolio();
@@ -2405,135 +1901,397 @@
             initializeContactForm();
             initializeAdminSecurity();
             initializeCounters();
-            initializeSlideshow();
-            initializeBackToTop();
+            initializeSlideshow(); // NEW: Initialize slideshow functionality
 
             // Check if already logged in
             checkAdminSession();
-
-            // Show notification
-            showNotification('Welcome to MWAFFS MEDIA!', 'success');
         });
 
-        // Particle System for Hero Section
-        function initializeParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 15;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Random properties
-                const size = Math.random() * 100 + 50;
-                const left = Math.random() * 100;
-                const top = Math.random() * 100;
-                const opacity = Math.random() * 0.3 + 0.1;
-                const animationDelay = Math.random() * 6;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${left}%`;
-                particle.style.top = `${top}%`;
-                particle.style.opacity = opacity;
-                particle.style.animationDelay = `${animationDelay}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
+        // NEW: Initialize slideshow functionality
+        function initializeSlideshow() {
+            const closeBtn = document.getElementById('slideshow-close');
+            const prevBtn = document.getElementById('slideshow-prev');
+            const nextBtn = document.getElementById('slideshow-next');
+            const slideshow = document.getElementById('category-slideshow');
 
-        // Enhanced image loading with better error handling
-        function loadImageWithFallback(imgElement, src, fallbackSrc = 'https://via.placeholder.com/800x600/2c3e50/ffffff?text=MWAFFS+MEDIA') {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.onload = function() {
-                    imgElement.src = src;
-                    if (imgElement.closest('.item-image')) {
-                        imgElement.closest('.item-image').classList.add('loaded');
-                    }
-                    resolve(true);
-                };
-                img.onerror = function() {
-                    console.warn('Failed to load image:', src);
-                    imgElement.src = fallbackSrc;
-                    if (imgElement.closest('.item-image')) {
-                        imgElement.closest('.item-image').classList.add('loaded');
-                    }
-                    resolve(false);
-                };
-                img.src = src;
-            });
-        }
+            closeBtn.addEventListener('click', closeSlideshow);
+            prevBtn.addEventListener('click', () => navigateSlideshow(-1));
+            nextBtn.addEventListener('click', () => navigateSlideshow(1));
 
-        // Notification System
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.className = `notification ${type} active`;
-            
-            setTimeout(() => {
-                notification.classList.remove('active');
-            }, 5000);
-        }
-
-        // Analytics System
-        function initializeAnalytics() {
-            // Load analytics data from localStorage
-            const savedAnalytics = localStorage.getItem('mwaffs_analytics');
-            if (savedAnalytics) {
-                analyticsData = JSON.parse(savedAnalytics);
-            }
-            
-            // Increment visit count
-            analyticsData.totalVisits++;
-            analyticsData.lastVisit = new Date().toISOString();
-            
-            // Save analytics data
-            localStorage.setItem('mwaffs_analytics', JSON.stringify(analyticsData));
-            
-            // Update analytics display
-            updateAnalyticsDisplay();
-        }
-
-        function updateAnalyticsDisplay() {
-            document.getElementById('total-visits').textContent = analyticsData.totalVisits;
-            document.getElementById('form-submissions').textContent = analyticsData.formSubmissions;
-        }
-
-        function resetAnalytics() {
-            if (confirm('Are you sure you want to reset all analytics data?')) {
-                analyticsData = {
-                    totalVisits: 0,
-                    formSubmissions: 0,
-                    lastVisit: null
-                };
-                localStorage.setItem('mwaffs_analytics', JSON.stringify(analyticsData));
-                updateAnalyticsDisplay();
-                showNotification('Analytics data has been reset', 'success');
-            }
-        }
-
-        // Back to Top Functionality
-        function initializeBackToTop() {
-            const backToTopBtn = document.getElementById('back-to-top');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
+            // Close slideshow when clicking outside content
+            slideshow.addEventListener('click', (e) => {
+                if (e.target === slideshow) {
+                    closeSlideshow();
                 }
             });
-            
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (slideshow.classList.contains('active')) {
+                    if (e.key === 'Escape') closeSlideshow();
+                    if (e.key === 'ArrowLeft') navigateSlideshow(-1);
+                    if (e.key === 'ArrowRight') navigateSlideshow(1);
+                }
             });
         }
 
-        // Enhanced portfolio initialization
+        // NEW: Open category slideshow
+        function openCategorySlideshow(category) {
+            const categoryItems = portfolioData.filter(item => item.category === category);
+            if (categoryItems.length === 0) return;
+
+            // Flatten all media from category items
+            const allMedia = [];
+            categoryItems.forEach(item => {
+                allMedia.push(...item.media);
+            });
+
+            if (allMedia.length === 0) return;
+
+            currentSlideshow = allMedia;
+            currentSlideIndex = 0;
+
+            // Create slideshow content
+            const container = document.getElementById('slideshow-container');
+            const dotsContainer = document.getElementById('slideshow-dots');
+            
+            container.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            allMedia.forEach((media, index) => {
+                const slide = document.createElement('div');
+                slide.className = `slideshow-slide ${index === 0 ? 'active' : ''}`;
+                
+                if (media.type === 'image') {
+                    slide.innerHTML = `<img src="${media.url}" alt="Slideshow image ${index + 1}" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop'">`;
+                } else if (media.type === 'video') {
+                    slide.innerHTML = `<iframe src="${media.url}" frameborder="0" allowfullscreen></iframe>`;
+                } else if (media.type === 'youtube') {
+                    slide.innerHTML = `<iframe src="${media.url}" frameborder="0" allowfullscreen></iframe>`;
+                }
+                
+                container.appendChild(slide);
+
+                // Create dot
+                const dot = document.createElement('span');
+                dot.className = `slideshow-dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            // Show slideshow
+            document.getElementById('category-slideshow').classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Start auto-slide
+            startAutoSlide();
+        }
+
+        // NEW: Navigate slideshow
+        function navigateSlideshow(direction) {
+            if (!currentSlideshow) return;
+            
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            
+            slides[currentSlideIndex].classList.remove('active');
+            dots[currentSlideIndex].classList.remove('active');
+            
+            currentSlideIndex = (currentSlideIndex + direction + currentSlideshow.length) % currentSlideshow.length;
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+            
+            // Reset auto-slide timer
+            resetAutoSlide();
+        }
+
+        // NEW: Go to specific slide
+        function goToSlide(index) {
+            if (!currentSlideshow || index < 0 || index >= currentSlideshow.length) return;
+            
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            
+            slides[currentSlideIndex].classList.remove('active');
+            dots[currentSlideIndex].classList.remove('active');
+            
+            currentSlideIndex = index;
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+            
+            // Reset auto-slide timer
+            resetAutoSlide();
+        }
+
+        // NEW: Start auto-slide
+        function startAutoSlide() {
+            if (slideshowInterval) clearInterval(slideshowInterval);
+            slideshowInterval = setInterval(() => {
+                navigateSlideshow(1);
+            }, 2000); // Change slide every 2 seconds
+        }
+
+        // NEW: Reset auto-slide timer
+        function resetAutoSlide() {
+            if (slideshowInterval) {
+                clearInterval(slideshowInterval);
+                startAutoSlide();
+            }
+        }
+
+        // NEW: Close slideshow
+        function closeSlideshow() {
+            document.getElementById('category-slideshow').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            if (slideshowInterval) {
+                clearInterval(slideshowInterval);
+                slideshowInterval = null;
+            }
+            
+            currentSlideshow = null;
+            currentSlideIndex = 0;
+        }
+
+        // Admin Security Functions
+        function initializeAdminSecurity() {
+            // Secret trigger for login
+            let secretInput = '';
+            document.addEventListener('keydown', (e) => {
+                secretInput += e.key.toLowerCase();
+                if (secretInput.includes(ADMIN_CONFIG.secretTrigger)) {
+                    showAdminLogin();
+                    secretInput = '';
+                }
+                
+                // Reset if input gets too long
+                if (secretInput.length > 20) {
+                    secretInput = '';
+                }
+            });
+
+            // Admin login form
+            document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = document.getElementById('admin-username').value;
+                const password = document.getElementById('admin-password').value;
+                
+                if (username === ADMIN_CONFIG.username && password === ADMIN_CONFIG.password) {
+                    loginAdmin();
+                } else {
+                    showLoginMessage('Invalid credentials. Please try again.', 'error');
+                }
+            });
+
+            // Secret login trigger click
+            document.getElementById('secret-login-trigger').addEventListener('click', () => {
+                showAdminLogin();
+            });
+        }
+
+        function showAdminLogin() {
+            document.getElementById('admin-login-modal').classList.add('active');
+            document.getElementById('admin-username').focus();
+        }
+
+        function hideAdminLogin() {
+            document.getElementById('admin-login-modal').classList.remove('active');
+            document.getElementById('admin-login-form').reset();
+            document.getElementById('login-message').style.display = 'none';
+        }
+
+        function showLoginMessage(message, type) {
+            const messageDiv = document.getElementById('login-message');
+            messageDiv.textContent = message;
+            messageDiv.className = `login-message ${type}`;
+            messageDiv.style.display = 'block';
+        }
+
+        function loginAdmin() {
+            // Set login session
+            const sessionData = {
+                loggedIn: true,
+                loginTime: Date.now()
+            };
+            localStorage.setItem('mwaffs_admin_session', JSON.stringify(sessionData));
+            
+            // Show admin toggle
+            document.getElementById('admin-toggle').classList.add('visible');
+            
+            // Hide login modal
+            hideAdminLogin();
+            
+            // Initialize admin panel
+            initializeAdmin();
+            
+            // Set session timeout
+            setTimeout(checkAdminSession, ADMIN_CONFIG.sessionTimeout);
+        }
+
+        function logoutAdmin() {
+            // Clear session
+            localStorage.removeItem('mwaffs_admin_session');
+            
+            // Hide admin panel and toggle
+            document.getElementById('admin-panel').classList.remove('active');
+            document.getElementById('admin-toggle').classList.remove('visible');
+            
+            // Show success message
+            alert('Successfully logged out from admin panel.');
+        }
+
+        function checkAdminSession() {
+            const sessionData = localStorage.getItem('mwaffs_admin_session');
+            
+            if (sessionData) {
+                const session = JSON.parse(sessionData);
+                const currentTime = Date.now();
+                
+                // Check if session is still valid
+                if (session.loggedIn && (currentTime - session.loginTime) < ADMIN_CONFIG.sessionTimeout) {
+                    // Session is valid
+                    document.getElementById('admin-toggle').classList.add('visible');
+                    initializeAdmin();
+                    
+                    // Update session time
+                    session.loginTime = currentTime;
+                    localStorage.setItem('mwaffs_admin_session', JSON.stringify(session));
+                } else {
+                    // Session expired
+                    logoutAdmin();
+                }
+            }
+        }
+
+        // Navigation functionality
+        function initializeNavigation() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const header = document.getElementById('header');
+
+            // Mobile menu toggle
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Smooth scrolling for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+
+                    // Close mobile menu
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+
+                    // Update active link
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                // Update active navigation based on scroll position
+                updateActiveNavigation();
+            });
+        }
+
+        function updateActiveNavigation() {
+            const sections = document.querySelectorAll('.section, .hero');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let current = 'home';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Counter animation
+        function initializeCounters() {
+            const counters = document.querySelectorAll('.number[data-count]');
+            const observerOptions = {
+                threshold: 0.5
+            };
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            counters.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+        }
+
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 40);
+        }
+
+        // Portfolio functionality - UPDATED: Added category slideshow
         function initializePortfolio() {
             renderPortfolio();
             
@@ -2550,7 +2308,6 @@
             });
         }
 
-        // Enhanced portfolio rendering
         function renderPortfolio() {
             const grid = document.getElementById('portfolio-grid');
             grid.innerHTML = '';
@@ -2562,53 +2319,103 @@
 
                 // Use the first media item for the thumbnail
                 const thumbnail = item.media[0];
-                
+                let mediaContent = '';
+                if (thumbnail.type === 'youtube') {
+                    mediaContent = `<iframe src="${thumbnail.url}" frameborder="0" allowfullscreen></iframe>`;
+                } else if (thumbnail.type === 'video') {
+                    mediaContent = `<video controls><source src="${thumbnail.url}" type="video/mp4"></video>`;
+                } else {
+                    mediaContent = `<img src="${thumbnail.url}" alt="${item.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop'">`;
+                }
+
                 portfolioItem.innerHTML = `
                     <div class="item-image">
-                        <img src="" alt="${item.title}" loading="lazy" data-src="${thumbnail.url}">
+                        ${thumbnail.type === 'image' ? `<img src="${thumbnail.url}" alt="${item.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop'">` : ''}
                         <div class="item-overlay">
-                            <button onclick="openCategorySlideshow('${item.category}')" class="btn btn-primary">
+                            <button onclick="openLightbox('${thumbnail.url}', '${thumbnail.type}')" class="btn btn-primary">
                                 <i class="fas fa-expand"></i>
-                                View Gallery
+                                View
                             </button>
                         </div>
                     </div>
                     <div class="item-content">
                         <h3>${item.title}</h3>
                         <p class="category">${item.category.replace('-', ' ').toUpperCase()}</p>
-                        <p class="description">${item.description}</p>
+                        <p>${item.description}</p>
                     </div>
                 `;
 
                 grid.appendChild(portfolioItem);
-
-                // Load image with error handling
-                const imgElement = portfolioItem.querySelector('img');
-                loadImageWithFallback(imgElement, thumbnail.url);
             });
 
-            // Enhance image loading
-            setTimeout(enhanceImageLoading, 100);
-        }
-
-        // Portfolio filtering
-        function filterPortfolio(filter) {
-            const items = document.querySelectorAll('.portfolio-item');
-            items.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
+            // Add category buttons for slideshow
+            const filtersContainer = document.querySelector('.portfolio-filters');
+            const categoryButtons = document.querySelectorAll('.filter-btn[data-filter]');
+            
+            categoryButtons.forEach(btn => {
+                const category = btn.getAttribute('data-filter');
+                if (category !== 'all') {
+                    // Add click event to open slideshow for this category
+                    btn.addEventListener('click', () => {
+                        // Small delay to ensure filter is applied first
+                        setTimeout(() => {
+                            openCategorySlideshow(category);
+                        }, 100);
+                    });
                 }
             });
         }
 
-        // Team initialization
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 100);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Lightbox functionality
+        function openLightbox(media, type) {
+            const lightbox = document.getElementById('lightbox');
+            const content = document.getElementById('lightbox-content');
+            
+            let mediaElement = '';
+            if (type === 'youtube') {
+                mediaElement = `<iframe src="${media}" width="80%" height="80%" frameborder="0" allowfullscreen></iframe>`;
+            } else if (type === 'video') {
+                mediaElement = `<video controls width="80%" height="80%"><source src="${media}" type="video/mp4"></video>`;
+            } else {
+                mediaElement = `<img src="${media}" alt="Portfolio item" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop'">`;
+            }
+            
+            content.innerHTML = mediaElement;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Team functionality
         function initializeTeam() {
             renderTeam();
         }
 
-        // Team rendering
         function renderTeam() {
             const grid = document.getElementById('team-grid');
             grid.innerHTML = '';
@@ -2616,58 +2423,43 @@
             teamData.forEach(member => {
                 const teamCard = document.createElement('div');
                 teamCard.className = 'team-card';
-                
-                let socialLinks = '';
-                if (member.social) {
-                    socialLinks = `
-                        <div class="team-social">
-                            ${member.social.facebook ? `<a href="${member.social.facebook}" target="_blank"><i class="fab fa-facebook-f"></i></a>` : ''}
-                            ${member.social.instagram ? `<a href="${member.social.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>` : ''}
-                            ${member.social.twitter ? `<a href="${member.social.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>` : ''}
-                            ${member.social.linkedin ? `<a href="${member.social.linkedin}" target="_blank"><i class="fab fa-linkedin-in"></i></a>` : ''}
-                            ${member.social.youtube ? `<a href="${member.social.youtube}" target="_blank"><i class="fab fa-youtube"></i></a>` : ''}
-                            ${member.social.behance ? `<a href="${member.social.behance}" target="_blank"><i class="fab fa-behance"></i></a>` : ''}
-                        </div>
-                    `;
-                }
-
                 teamCard.innerHTML = `
                     <div class="card-image">
-                        <img src="${member.image}" alt="${member.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Image+Not+Found'">
+                        <img src="${member.image}" alt="${member.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'">
                     </div>
                     <div class="card-content">
                         <h3>${member.name}</h3>
                         <p class="position">${member.position}</p>
                         <p class="bio">${member.bio}</p>
-                        ${socialLinks}
                     </div>
                 `;
                 grid.appendChild(teamCard);
             });
         }
 
-        // Testimonials initialization
+        // Testimonials functionality
         function initializeTestimonials() {
-            // Already implemented in HTML
+            let currentTestimonial = 0;
+            setInterval(() => {
+                changeTestimonial(1);
+            }, 5000);
         }
 
-        // Testimonial navigation
         function changeTestimonial(direction) {
             const testimonials = document.querySelectorAll('.testimonial-item');
-            let currentIndex = 0;
+            const current = document.querySelector('.testimonial-item.active');
+            let currentIndex = Array.from(testimonials).indexOf(current);
+
+            current.classList.remove('active');
             
-            testimonials.forEach((testimonial, index) => {
-                if (testimonial.classList.contains('active')) {
-                    currentIndex = index;
-                    testimonial.classList.remove('active');
-                }
-            });
+            currentIndex += direction;
+            if (currentIndex >= testimonials.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = testimonials.length - 1;
             
-            let newIndex = (currentIndex + direction + testimonials.length) % testimonials.length;
-            testimonials[newIndex].classList.add('active');
+            testimonials[currentIndex].classList.add('active');
         }
 
-        // Contact form initialization
+        // Contact form with Web3Forms
         function initializeContactForm() {
             const form = document.getElementById('contact-form');
             const submitBtn = document.getElementById('submit-btn');
@@ -2692,7 +2484,7 @@
                 
                 try {
                     // Using Web3Forms for form submission
-                    const response = await fetch('https://api.web3forms.com/submit', {
+                    const response = await fetch(form.action, {
                         method: 'POST',
                         body: formData,
                         headers: {
@@ -2706,11 +2498,6 @@
                         // Success
                         showMessage('Thank you for your message! We\'ll get back to you soon.', 'success');
                         form.reset();
-                        
-                        // Update analytics
-                        analyticsData.formSubmissions++;
-                        localStorage.setItem('mwaffs_analytics', JSON.stringify(analyticsData));
-                        updateAnalyticsDisplay();
                     } else {
                         // Error
                         throw new Error(result.message || 'Form submission failed');
@@ -2727,512 +2514,545 @@
             });
         }
 
-        // Form message display
+        // Show form message
         function showMessage(message, type) {
             const messageDiv = document.getElementById('form-message');
             messageDiv.textContent = message;
             messageDiv.className = `form-message ${type}`;
             messageDiv.style.display = 'block';
             
+            // Hide message after 5 seconds
             setTimeout(() => {
                 messageDiv.style.display = 'none';
             }, 5000);
         }
 
-        // Admin security initialization
-        function initializeAdminSecurity() {
-            const secretTrigger = document.getElementById('secret-login-trigger');
-            const loginModal = document.getElementById('admin-login-modal');
-            const loginForm = document.getElementById('admin-login-form');
+        // Admin panel functionality
+        function initializeAdmin() {
+            loadAdminData();
             
-            // Secret trigger click handler
-            secretTrigger.addEventListener('click', () => {
-                loginModal.style.display = 'flex';
-            });
-            
-            // Login form submission
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const username = document.getElementById('admin-username').value;
-                const password = document.getElementById('admin-password').value;
-                const messageDiv = document.getElementById('login-message');
-                
-                if (username === ADMIN_CONFIG.username && password === ADMIN_CONFIG.password) {
-                    // Successful login
-                    const sessionData = {
-                        loggedIn: true,
-                        loginTime: new Date().getTime()
-                    };
-                    localStorage.setItem('mwaffs_admin_session', JSON.stringify(sessionData));
-                    
-                    loginModal.style.display = 'none';
-                    document.getElementById('admin-toggle').classList.add('visible');
-                    showNotification('Admin login successful!', 'success');
-                } else {
-                    // Failed login
-                    messageDiv.textContent = 'Invalid username or password';
-                    messageDiv.style.color = 'var(--primary-color)';
-                }
-            });
-            
-            // Close modal when clicking outside
-            loginModal.addEventListener('click', (e) => {
-                if (e.target === loginModal) {
-                    loginModal.style.display = 'none';
-                }
-            });
+            document.getElementById('admin-toggle').addEventListener('click', toggleAdmin);
         }
 
-        // Check admin session
-        function checkAdminSession() {
-            const sessionData = localStorage.getItem('mwaffs_admin_session');
-            if (sessionData) {
-                const session = JSON.parse(sessionData);
-                const currentTime = new Date().getTime();
-                
-                if (session.loggedIn && (currentTime - session.loginTime) < ADMIN_CONFIG.sessionTimeout) {
-                    document.getElementById('admin-toggle').classList.add('visible');
-                } else {
-                    localStorage.removeItem('mwaffs_admin_session');
-                }
-            }
-        }
-
-        // Counter animation
-        function initializeCounters() {
-            const counters = document.querySelectorAll('.number');
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-count');
-                const increment = target / 100;
-                let current = 0;
-                
-                const updateCounter = () => {
-                    if (current < target) {
-                        current += increment;
-                        counter.textContent = Math.ceil(current);
-                        setTimeout(updateCounter, 20);
-                    } else {
-                        counter.textContent = target;
-                    }
-                };
-                updateCounter();
-            });
-        }
-
-        // Slideshow initialization
-        function initializeSlideshow() {
-            const closeBtn = document.getElementById('slideshow-close');
-            const prevBtn = document.getElementById('slideshow-prev');
-            const nextBtn = document.getElementById('slideshow-next');
-            
-            closeBtn.addEventListener('click', closeSlideshow);
-            prevBtn.addEventListener('click', () => navigateSlideshow(-1));
-            nextBtn.addEventListener('click', () => navigateSlideshow(1));
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (document.getElementById('category-slideshow').classList.contains('active')) {
-                    if (e.key === 'Escape') closeSlideshow();
-                    if (e.key === 'ArrowLeft') navigateSlideshow(-1);
-                    if (e.key === 'ArrowRight') navigateSlideshow(1);
-                }
-            });
-        }
-
-        // Enhanced slideshow with info display
-        function openCategorySlideshow(category) {
-            const categoryItems = portfolioData.filter(item => item.category === category);
-            if (categoryItems.length === 0) return;
-
-            // Flatten all media from category items
-            const allMedia = [];
-            categoryItems.forEach(item => {
-                item.media.forEach(media => {
-                    allMedia.push({
-                        ...media,
-                        projectTitle: item.title,
-                        projectDescription: item.description
-                    });
-                });
-            });
-
-            if (allMedia.length === 0) return;
-
-            currentSlideshow = allMedia;
-            currentSlideIndex = 0;
-
-            // Create slideshow content
-            const container = document.getElementById('slideshow-container');
-            const dotsContainer = document.getElementById('slideshow-dots');
-            const infoContainer = document.getElementById('slideshow-info');
-            
-            container.innerHTML = '';
-            dotsContainer.innerHTML = '';
-
-            allMedia.forEach((media, index) => {
-                const slide = document.createElement('div');
-                slide.className = `slideshow-slide ${index === 0 ? 'active' : ''}`;
-                
-                if (media.type === 'image') {
-                    slide.innerHTML = `<img src="${media.url}" alt="${media.title || 'Portfolio image'}" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">`;
-                } else if (media.type === 'video') {
-                    slide.innerHTML = `<video controls><source src="${media.url}" type="video/mp4"></video>`;
-                } else if (media.type === 'youtube') {
-                    slide.innerHTML = `<iframe src="${media.url}" frameborder="0" allowfullscreen></iframe>`;
-                }
-                
-                container.appendChild(slide);
-
-                // Create dot
-                const dot = document.createElement('span');
-                dot.className = `slideshow-dot ${index === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-
-            // Update info for first slide
-            updateSlideshowInfo();
-
-            // Show slideshow
-            document.getElementById('category-slideshow').classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            // Start auto-slide
-            startAutoSlide();
-        }
-
-        function updateSlideshowInfo() {
-            const infoContainer = document.getElementById('slideshow-info');
-            const currentMedia = currentSlideshow[currentSlideIndex];
-            
-            if (currentMedia) {
-                infoContainer.innerHTML = `
-                    <strong>${currentMedia.projectTitle}</strong>
-                    ${currentMedia.title ? ` - ${currentMedia.title}` : ''}
-                `;
-            }
-        }
-
-        function goToSlide(index) {
-            if (!currentSlideshow) return;
-            
-            const slides = document.querySelectorAll('.slideshow-slide');
-            const dots = document.querySelectorAll('.slideshow-dot');
-            
-            slides[currentSlideIndex].classList.remove('active');
-            dots[currentSlideIndex].classList.remove('active');
-            
-            currentSlideIndex = index;
-            
-            slides[currentSlideIndex].classList.add('active');
-            dots[currentSlideIndex].classList.add('active');
-            
-            // Update info
-            updateSlideshowInfo();
-            
-            // Reset auto-slide timer
-            resetAutoSlide();
-        }
-
-        // Enhanced navigation for slideshow
-        function navigateSlideshow(direction) {
-            if (!currentSlideshow) return;
-            
-            const slides = document.querySelectorAll('.slideshow-slide');
-            const dots = document.querySelectorAll('.slideshow-dot');
-            
-            slides[currentSlideIndex].classList.remove('active');
-            dots[currentSlideIndex].classList.remove('active');
-            
-            currentSlideIndex = (currentSlideIndex + direction + currentSlideshow.length) % currentSlideshow.length;
-            
-            slides[currentSlideIndex].classList.add('active');
-            dots[currentSlideIndex].classList.add('active');
-            
-            // Update info
-            updateSlideshowInfo();
-            
-            // Reset auto-slide timer
-            resetAutoSlide();
-        }
-
-        function startAutoSlide() {
-            slideshowInterval = setInterval(() => {
-                navigateSlideshow(1);
-            }, 5000);
-        }
-
-        function resetAutoSlide() {
-            if (slideshowInterval) {
-                clearInterval(slideshowInterval);
-                startAutoSlide();
-            }
-        }
-
-        function closeSlideshow() {
-            document.getElementById('category-slideshow').classList.remove('active');
-            document.body.style.overflow = 'auto';
-            
-            if (slideshowInterval) {
-                clearInterval(slideshowInterval);
-                slideshowInterval = null;
-            }
-        }
-
-        // Enhanced lightbox functionality
-        let currentLightboxIndex = 0;
-        let currentLightboxItems = [];
-
-        function openLightbox(items, startIndex = 0) {
-            currentLightboxItems = items;
-            currentLightboxIndex = startIndex;
-            
-            const lightbox = document.getElementById('lightbox');
-            const content = document.getElementById('lightbox-content');
-            
-            updateLightboxContent();
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function updateLightboxContent() {
-            const content = document.getElementById('lightbox-content');
-            const currentItem = currentLightboxItems[currentLightboxIndex];
-            
-            let mediaElement = '';
-            if (currentItem.type === 'youtube') {
-                mediaElement = `<iframe src="${currentItem.url}" width="80%" height="80%" frameborder="0" allowfullscreen></iframe>`;
-            } else if (currentItem.type === 'video') {
-                mediaElement = `<video controls width="80%" height="80%"><source src="${currentItem.url}" type="video/mp4"></video>`;
-            } else {
-                mediaElement = `<img src="${currentItem.url}" alt="Portfolio item" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found'">`;
-            }
-            
-            content.innerHTML = mediaElement;
-        }
-
-        function navigateLightbox(direction) {
-            currentLightboxIndex = (currentLightboxIndex + direction + currentLightboxItems.length) % currentLightboxItems.length;
-            updateLightboxContent();
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Enhanced mobile menu
-        function initializeNavigation() {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const header = document.getElementById('header');
-
-            // Mobile menu toggle
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
-            });
-
-            // Close mobile menu when clicking on links
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-            });
-
-            // Header scroll effect
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Active navigation link highlighting
-            window.addEventListener('scroll', () => {
-                let current = '';
-                const sections = document.querySelectorAll('section');
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 200)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        }
-
-        // Animation initialization
-        function initializeAnimations() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
-        }
-
-        // Image loading enhancement
-        function enhanceImageLoading() {
-            const images = document.querySelectorAll('img[data-src]');
-            
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            
-            images.forEach(img => imageObserver.observe(img));
-        }
-
-        // Admin panel functions
         function toggleAdmin() {
-            const adminPanel = document.getElementById('admin-panel');
-            adminPanel.classList.toggle('active');
+            const panel = document.getElementById('admin-panel');
+            panel.classList.toggle('active');
         }
 
+        function loadAdminData() {
+            // Load team data into admin
+            const teamSelect = document.getElementById('team-select');
+            teamSelect.innerHTML = '<option value="">Add New Member</option>';
+            teamData.forEach(member => {
+                const option = document.createElement('option');
+                option.value = member.id;
+                option.textContent = member.name;
+                teamSelect.appendChild(option);
+            });
+
+            // Load portfolio data into admin
+            const portfolioSelect = document.getElementById('portfolio-select');
+            portfolioSelect.innerHTML = '<option value="">Add New Project</option>';
+            portfolioData.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = item.title;
+                portfolioSelect.appendChild(option);
+            });
+
+            // Load content data
+            document.getElementById('company-tagline').value = contentData.tagline;
+            document.getElementById('company-description').value = contentData.description;
+            document.getElementById('contact-phone').value = contentData.phone;
+            document.getElementById('contact-email').value = contentData.email;
+            document.getElementById('contact-address').value = contentData.address;
+        }
+
+        // Team management functions
         function loadTeamMember() {
-            // Implementation for loading team member data
-            console.log('Load team member function called');
+            const select = document.getElementById('team-select');
+            const memberId = parseInt(select.value);
+            
+            if (!memberId) {
+                // Clear form for new member
+                document.getElementById('team-name').value = '';
+                document.getElementById('team-position').value = '';
+                document.getElementById('team-bio').value = '';
+                document.getElementById('team-image').value = '';
+                return;
+            }
+            
+            const member = teamData.find(m => m.id === memberId);
+            if (member) {
+                document.getElementById('team-name').value = member.name;
+                document.getElementById('team-position').value = member.position;
+                document.getElementById('team-bio').value = member.bio;
+                document.getElementById('team-image').value = member.image;
+            }
         }
 
         function saveTeamMember() {
-            // Implementation for saving team member data
-            console.log('Save team member function called');
-            showNotification('Team member saved successfully', 'success');
+            const select = document.getElementById('team-select');
+            const memberId = parseInt(select.value);
+            
+            const memberData = {
+                name: document.getElementById('team-name').value,
+                position: document.getElementById('team-position').value,
+                bio: document.getElementById('team-bio').value,
+                image: document.getElementById('team-image').value || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
+            };
+
+            if (!memberData.name || !memberData.position) {
+                alert('Please fill in name and position.');
+                return;
+            }
+
+            if (memberId) {
+                // Update existing member
+                const index = teamData.findIndex(m => m.id === memberId);
+                if (index !== -1) {
+                    teamData[index] = { ...teamData[index], ...memberData };
+                }
+            } else {
+                // Add new member
+                const newId = Math.max(...teamData.map(m => m.id)) + 1;
+                teamData.push({ id: newId, ...memberData });
+            }
+
+            renderTeam();
+            loadAdminData();
+            alert('Team member saved successfully!');
         }
 
         function deleteTeamMember() {
-            // Implementation for deleting team member
-            console.log('Delete team member function called');
+            const select = document.getElementById('team-select');
+            const memberId = parseInt(select.value);
+            
+            if (!memberId) {
+                alert('Please select a team member to delete.');
+                return;
+            }
+
+            if (confirm('Are you sure you want to delete this team member?')) {
+                teamData = teamData.filter(m => m.id !== memberId);
+                renderTeam();
+                loadAdminData();
+                loadTeamMember(); // Clear form
+                alert('Team member deleted successfully!');
+            }
         }
 
+        // Portfolio management functions - UPDATED: For new portfolio data structure
         function loadPortfolioItem() {
-            // Implementation for loading portfolio item
-            console.log('Load portfolio item function called');
+            const select = document.getElementById('portfolio-select');
+            const itemId = parseInt(select.value);
+            
+            if (!itemId) {
+                // Clear form for new item
+                document.getElementById('portfolio-title').value = '';
+                document.getElementById('portfolio-category').value = 'photography';
+                document.getElementById('portfolio-description').value = '';
+                document.getElementById('portfolio-media').value = '';
+                document.getElementById('portfolio-type').value = 'image';
+                return;
+            }
+            
+            const item = portfolioData.find(p => p.id === itemId);
+            if (item) {
+                document.getElementById('portfolio-title').value = item.title;
+                document.getElementById('portfolio-category').value = item.category;
+                document.getElementById('portfolio-description').value = item.description;
+                // For simplicity, we'll just use the first media item in admin
+                document.getElementById('portfolio-media').value = item.media[0].url;
+                document.getElementById('portfolio-type').value = item.media[0].type;
+            }
         }
 
         function savePortfolioItem() {
-            // Implementation for saving portfolio item
-            console.log('Save portfolio item function called');
-            showNotification('Portfolio item saved successfully', 'success');
+            const select = document.getElementById('portfolio-select');
+            const itemId = parseInt(select.value);
+            
+            const itemData = {
+                title: document.getElementById('portfolio-title').value,
+                category: document.getElementById('portfolio-category').value,
+                description: document.getElementById('portfolio-description').value,
+                media: [
+                    {
+                        url: document.getElementById('portfolio-media').value,
+                        type: document.getElementById('portfolio-type').value
+                    }
+                ]
+            };
+
+            if (!itemData.title || !itemData.media[0].url) {
+                alert('Please fill in title and media URL.');
+                return;
+            }
+
+            if (itemId) {
+                // Update existing item
+                const index = portfolioData.findIndex(p => p.id === itemId);
+                if (index !== -1) {
+                    portfolioData[index] = { ...portfolioData[index], ...itemData };
+                }
+            } else {
+                // Add new item
+                const newId = Math.max(...portfolioData.map(p => p.id)) + 1;
+                portfolioData.push({ id: newId, ...itemData });
+            }
+
+            renderPortfolio();
+            loadAdminData();
+            alert('Portfolio item saved successfully!');
         }
 
         function deletePortfolioItem() {
-            // Implementation for deleting portfolio item
-            console.log('Delete portfolio item function called');
+            const select = document.getElementById('portfolio-select');
+            const itemId = parseInt(select.value);
+            
+            if (!itemId) {
+                alert('Please select a portfolio item to delete.');
+                return;
+            }
+
+            if (confirm('Are you sure you want to delete this portfolio item?')) {
+                portfolioData = portfolioData.filter(p => p.id !== itemId);
+                renderPortfolio();
+                loadAdminData();
+                loadPortfolioItem(); // Clear form
+                alert('Portfolio item deleted successfully!');
+            }
         }
 
+        // Content management functions
         function saveGeneralContent() {
-            // Implementation for saving general content
-            console.log('Save general content function called');
-            showNotification('Content saved successfully', 'success');
+            contentData.tagline = document.getElementById('company-tagline').value;
+            contentData.description = document.getElementById('company-description').value;
+            contentData.phone = document.getElementById('contact-phone').value;
+            contentData.email = document.getElementById('contact-email').value;
+            contentData.address = document.getElementById('contact-address').value;
+
+            // Update content on the page
+            updatePageContent();
+            alert('Content updated successfully!');
         }
 
-        function logoutAdmin() {
-            localStorage.removeItem('mwaffs_admin_session');
-            document.getElementById('admin-toggle').classList.remove('visible');
-            document.getElementById('admin-panel').classList.remove('active');
-            showNotification('Admin logged out successfully', 'success');
+        function updatePageContent() {
+            // Update tagline in hero section
+            const taglineElement = document.querySelector('.hero-content .tagline');
+            if (taglineElement) {
+                taglineElement.textContent = contentData.tagline;
+            }
+
+            // Update contact information
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems.forEach(item => {
+                const icon = item.querySelector('i');
+                if (icon && icon.classList.contains('fa-phone')) {
+                    item.querySelector('p').textContent = contentData.phone;
+                } else if (icon && icon.classList.contains('fa-envelope')) {
+                    item.querySelector('p').textContent = contentData.email;
+                } else if (icon && icon.classList.contains('fa-map-marker-alt')) {
+                    item.querySelector('p').innerHTML = contentData.address.replace('\n', '<br>');
+                }
+            });
         }
 
-        // Enhanced error handling
+        // Utility functions
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Performance optimization
+        window.addEventListener('scroll', debounce(() => {
+            updateActiveNavigation();
+        }, 10));
+
+        // Add loading states for better UX
+        function showLoading(element, text) {
+            element.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + text;
+            element.disabled = true;
+        }
+
+        function hideLoading(element, originalText) {
+            element.innerHTML = originalText;
+            element.disabled = false;
+        }
+
+        // Error handling
         window.addEventListener('error', (e) => {
             console.error('An error occurred:', e.error);
-            showNotification('An unexpected error occurred. Please refresh the page.', 'error');
         });
 
-        // Performance optimization - Lazy loading for images
-        function initializeLazyLoading() {
-            const lazyImages = document.querySelectorAll('img[data-src]');
-            
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        imageObserver.unobserve(img);
-                    }
-                });
+        // Add CSS for testimonial carousel
+        const additionalCSS = `
+            .testimonials-carousel {
+                position: relative;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            .testimonial-item {
+                display: none;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+
+            .testimonial-item.active {
+                display: block;
+                opacity: 1;
+            }
+
+            .testimonial-content {
+                background: white;
+                padding: 3rem 2rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                position: relative;
+            }
+
+            .testimonial-content::before {
+                content: '"';
+                font-size: 4rem;
+                color: var(--primary-color);
+                position: absolute;
+                top: -10px;
+                left: 20px;
+                font-family: serif;
+            }
+
+            .testimonial-content p {
+                font-size: 1.2rem;
+                font-style: italic;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .testimonial-author h4 {
+                color: var(--primary-color);
+                margin-bottom: 0.5rem;
+                font-size: 1.1rem;
+            }
+
+            .testimonial-author span {
+                opacity: 0.7;
+                font-size: 0.9rem;
+            }
+
+            .testimonial-nav {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .testimonial-nav button {
+                width: 50px;
+                height: 50px;
+                border: 2px solid var(--primary-color);
+                background: transparent;
+                color: var(--primary-color);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .testimonial-nav button:hover {
+                background: var(--primary-color);
+                color: white;
+                transform: scale(1.1);
+            }
+
+            .admin-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid var(--primary-color);
+            }
+
+            .admin-header h2 {
+                color: var(--primary-color);
+                margin: 0;
+            }
+
+            .close-admin {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--text-dark);
+                padding: 5px;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+            }
+
+            .close-admin:hover {
+                background: var(--primary-color);
+                color: white;
+            }
+
+            .admin-buttons {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .admin-buttons .btn {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .form-group select {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                transition: border-color 0.3s ease;
+                background: white;
+            }
+
+            .form-group select:focus {
+                outline: none;
+                border-color: var(--primary-color);
+            }
+
+            @media (max-width: 768px) {
+                .testimonial-content {
+                    padding: 2rem 1rem;
+                }
+
+                .testimonial-content p {
+                    font-size: 1rem;
+                }
+
+                .admin-buttons {
+                    flex-direction: column;
+                }
+            }
+        `;
+
+        // Inject additional CSS
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalCSS;
+        document.head.appendChild(styleSheet);
+
+        // Add smooth scrolling behavior for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Preload critical images for better performance
+        function preloadImages() {
+            const imageUrls = [
+                ...teamData.map(member => member.image),
+                ...portfolioData.flatMap(item => 
+                    item.media.filter(media => media.type === 'image').map(media => media.url)
+                )
+            ];
+
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
             });
-            
-            lazyImages.forEach(img => imageObserver.observe(img));
         }
 
-        // Initialize lazy loading
-        setTimeout(initializeLazyLoading, 1000);
+        // Initialize preloading
+        setTimeout(preloadImages, 1000);
 
-        // Enhanced accessibility
+        // Add intersection observer for better performance
+        function setupLazyLoading() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                images.forEach(img => imageObserver.observe(img));
+            }
+        }
+
+        // Add accessibility improvements
         function setupAccessibility() {
-            // Add keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                // Escape key closes modals
-                if (e.key === 'Escape') {
-                    closeSlideshow();
-                    closeLightbox();
-                    const adminModal = document.getElementById('admin-login-modal');
-                    if (adminModal.style.display === 'flex') {
-                        adminModal.style.display = 'none';
+            // Add keyboard navigation for portfolio filters
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
                     }
-                }
+                });
             });
 
             // Add ARIA labels
             document.querySelector('.hamburger').setAttribute('aria-label', 'Toggle mobile menu');
             document.querySelector('.admin-toggle').setAttribute('aria-label', 'Toggle admin panel');
-            document.querySelector('.back-to-top').setAttribute('aria-label', 'Back to top');
-            
-            // Add role attributes
-            document.querySelector('.nav-menu').setAttribute('role', 'navigation');
-            document.querySelector('.portfolio-grid').setAttribute('role', 'grid');
         }
 
         // Initialize accessibility features
         setTimeout(setupAccessibility, 500);
+        
+        // Add service worker for offline functionality (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Service worker registration would go here
+                // This is just a placeholder for future implementation
+                console.log('Service Worker ready for implementation');
+            });
+        }
+
+        // Add print styles
+        const printCSS = `
+            @media print {
+                .header, .admin-panel, .admin-toggle, .lightbox {
+                    display: none !important;
+                }
+                
+                .hero {
+                    height: auto;
+                    padding: 2rem 0;
+                    background: white;
+                    color: black;
+                }
+                
+                .section {
+                    page-break-inside: avoid;
+                    padding: 1rem 0;
+                }
+                
+                .team-card, .service-card, .portfolio-item {
+                    page-break-inside: avoid;
+                    box-shadow: none;
+                    border: 1px solid #ddd;
+                }
+            }
+        `;
+
+        const printStyleSheet = document.createElement('style');
+        printStyleSheet.textContent = printCSS;
+        printStyleSheet.media = 'print';
+        document.head.appendChild(printStyleSheet);
     </script>
 </body>
 </html>
