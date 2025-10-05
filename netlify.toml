@@ -1,14 +1,12 @@
 [build]
   publish = "."
 
-[build.environment]
-  NODE_VERSION = "18"
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Function configurations
-[functions]
-  node_bundler = "esbuild"
+# Optional: Form settings (not required but good to have)
+[forms]
+  [forms.honeypot]
+    field = "bot-field"
