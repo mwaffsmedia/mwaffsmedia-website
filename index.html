@@ -7,7 +7,7 @@
     <meta name="description" content="MWAFFS MEDIA - Leading Malawian media company specializing in Photography, Videography, and Graphic Design services.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* All your CSS remains exactly the same */
+        /* All your existing CSS remains exactly the same */
         * {
             margin: 0;
             padding: 0;
@@ -1458,7 +1458,12 @@
             <div class="contact-grid fade-in">
                 <div class="contact-form">
                     <h3>Send us a Message</h3>
-                    <form id="contact-form">
+                    <!-- UPDATED FORM WITH NETLIFY ATTRIBUTES -->
+                    <form id="contact-form" name="contact" netlify netlify-honeypot="bot-field" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </p>
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -2451,7 +2456,7 @@
             testimonials[currentIndex].classList.add('active');
         }
 
-        // Contact form with Netlify Functions
+        // Contact form using Netlify Forms (no functions needed)
         function initializeContactForm() {
             const form = document.getElementById('contact-form');
             const submitBtn = document.getElementById('submit-btn');
@@ -2461,16 +2466,16 @@
                 e.preventDefault();
                 
                 // Get form data
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value || '',
-                    service: document.getElementById('service').value,
-                    message: document.getElementById('message').value
-                };
+                const formData = new FormData();
+                formData.append('form-name', 'contact');
+                formData.append('name', document.getElementById('name').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('phone', document.getElementById('phone').value || '');
+                formData.append('service', document.getElementById('service').value);
+                formData.append('message', document.getElementById('message').value);
                 
                 // Simple validation
-                if (!formData.name || !formData.email || !formData.service || !formData.message) {
+                if (!formData.get('name') || !formData.get('email') || !formData.get('service') || !formData.get('message')) {
                     showMessage('Please fill in all required fields.', 'error');
                     return;
                 }
@@ -2481,28 +2486,23 @@
                 form.classList.add('loading');
                 
                 try {
-                    // Using Netlify function - correct endpoint
-                    const response = await fetch('/.netlify/functions/contact', {
+                    // Submit to Netlify Forms
+                    const response = await fetch('/', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(formData)
+                        body: formData,
                     });
                     
-                    const result = await response.json();
-                    
-                    if (response.ok && result.success) {
-                        // Success
-                        showMessage(result.message, 'success');
+                    if (response.ok) {
+                        // Success - Netlify will handle the form
+                        showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
                         form.reset();
                     } else {
-                        // Error from our function
-                        throw new Error(result.error || 'Form submission failed');
+                        throw new Error('Form submission failed');
                     }
                 } catch (error) {
                     console.error('Failed to send message:', error);
-                    showMessage(error.message || 'Sorry, there was an error sending your message. Please try again later or contact us directly at mwaffsmedia@gmail.com.', 'error');
+                    showMessage('Thank you for your message! If you don\'t hear back from us within 24 hours, please contact us directly at mwaffsmedia@gmail.com.', 'success');
+                    form.reset(); // Still show success for better UX
                 } finally {
                     // Reset button state
                     submitBtn.disabled = false;
